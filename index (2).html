@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enes Erdogan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Bricolage+Grotesque:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0C0C0F;
+      --bg2: #111116;
+      --surface: #16161D;
+      --surface2: #1C1C25;
+      --border: #2A2A35;
+      --ink: #F0EEE8;
+      --ink-dim: #8888A0;
+      --ink-faint: #3A3A50;
+      --green: #3DDC84;
+      --green-dim: rgba(61,220,132,0.10);
+      --cyan: #00D9FF;
+      --orange: #FF8C42;
+      --purple: #9B7FFF;
+      --mono: 'JetBrains Mono', monospace;
+      --display: 'Bricolage Grotesque', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--display);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--green); color: #000; }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--green); }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 6vw;
+      transition: background .3s, border-color .3s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(12,12,15,0.92);
+      border-color: var(--border);
+      backdrop-filter: blur(20px);
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 0.88rem;
+      color: var(--ink);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .nav-logo .prompt { color: var(--green); }
+    .nav-logo .blink {
+      display: inline-block;
+      width: 8px; height: 14px;
+      background: var(--green);
+      margin-left: 2px;
+      vertical-align: middle;
+      animation: blink 1.1s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--ink-dim);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .num { color: var(--green); margin-right: 0.2rem; font-size: 0.72rem; }
+
+    /* HERO */
+    #home {
+      min-height: 100vh;
+      padding: 0 6vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #home::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.22;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+    }
+
+    .hero-greeting {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: var(--green);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp .6s .2s forwards;
+    }
+    .hero-greeting::before { content: '// '; opacity: 0.5; }
+
+    .hero-name {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+      opacity: 0;
+      animation: fadeUp .6s .35s forwards;
+    }
+    .hero-name span { color: var(--green); }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp .6s .5s forwards;
+    }
+    .hero-tag {
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      background: var(--green-dim);
+      color: var(--green);
+      border: 1px solid rgba(61,220,132,0.22);
+      padding: 0.25rem 0.7rem;
+      border-radius: 4px;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--ink-dim);
+      max-width: 540px;
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+      opacity: 0;
+      animation: fadeUp .6s .65s forwards;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp .6s .8s forwards;
+    }
+
+    .btn {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 0.75rem 1.75rem;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform .2s, box-shadow .2s, background .2s, color .2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-green { background: var(--green); color: #000; }
+    .btn-green:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(61,220,132,0.3); }
+    .btn-outline { background: transparent; color: var(--ink-dim); border: 1px solid var(--border); }
+    .btn-outline:hover { color: var(--ink); border-color: var(--ink-dim); background: var(--surface); }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem; left: 6vw;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--ink-faint);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      opacity: 0;
+      animation: fadeUp .6s 1.1s forwards;
+    }
+    .scroll-hint::before {
+      content: '';
+      display: inline-block;
+      width: 1px; height: 36px;
+      background: linear-gradient(to bottom, transparent, var(--ink-faint));
+    }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(18px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* SECTIONS */
+    section { padding: 7rem 6vw; }
+
+    .s-eye {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      color: var(--green);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .s-eye::after {
+      content: '';
+      flex: 0 0 36px; height: 1px;
+      background: var(--green);
+      opacity: 0.45;
+    }
+
+    .s-title {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .s-sub {
+      font-size: 1rem;
+      color: var(--ink-dim);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 3.5rem;
+    }
+
+    hr.sep { border: none; border-top: 1px solid var(--border); margin: 0 6vw; }
+
+    /* SKILLS */
+    #competences { background: var(--bg2); }
+
+    .skills-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .code-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      margin-top: 2rem;
+    }
+    .code-header {
+      background: var(--surface2);
+      padding: 0.65rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-r { background: #FF5F57; }
+    .dot-y { background: #FFBD2E; }
+    .dot-g { background: #28CA41; }
+    .cf { color: var(--ink-faint); font-size: 0.74rem; margin-left: 0.4rem; }
+    .code-body { padding: 1.2rem 1.5rem; line-height: 2.1; }
+    .kw  { color: var(--purple); }
+    .fn  { color: var(--cyan); }
+    .st  { color: var(--orange); }
+    .cm  { color: var(--ink-faint); }
+    .nm  { color: var(--green); }
+
+    .skill-group { margin-bottom: 2.5rem; }
+    .sg-title {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--ink-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .skill-bars { display: flex; flex-direction: column; gap: 0.75rem; }
+    .sb-row {
+      display: grid;
+      grid-template-columns: 130px 1fr 36px;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .sb-label { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-dim); }
+    .bar-track { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+    .bar-fill {
+      height: 100%; border-radius: 2px;
+      background: var(--green);
+      width: 0;
+      transition: width 1.2s cubic-bezier(.4,0,.2,1);
+    }
+    .bar-fill.c { background: var(--cyan); }
+    .bar-fill.o { background: var(--orange); }
+    .bar-fill.p { background: var(--purple); }
+    .sb-pct { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-faint); text-align: right; }
+
+    /* PROJETS */
+    #projets { background: var(--bg); }
+
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .proj-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .proj-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s;
+    }
+    .proj-card:hover { border-color: var(--ink-faint); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
+    .proj-card:hover::after { transform: scaleX(1); }
+
+    .proj-card.feat { grid-column: span 2; border-color: rgba(61,220,132,0.2); }
+    .proj-card.feat::after { background: var(--green); }
+    .proj-card:not(.feat)::after { background: var(--cyan); }
+
+    .proj-top { display: flex; justify-content: space-between; align-items: flex-start; }
+    .proj-icon { font-size: 1.6rem; line-height: 1; }
+    .proj-year { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-faint); }
+    .proj-card h3 { font-family: var(--display); font-weight: 700; font-size: 1rem; color: var(--ink); line-height: 1.3; }
+    .proj-card p { font-size: 0.84rem; color: var(--ink-dim); line-height: 1.65; flex: 1; }
+
+    .proj-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; }
+    .st-tag {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      color: var(--ink-dim);
+    }
+    .st-tag.g { border-color: rgba(61,220,132,0.3); color: var(--green); }
+    .st-tag.c { border-color: rgba(0,217,255,0.3); color: var(--cyan); }
+    .st-tag.o { border-color: rgba(255,140,66,0.3); color: var(--orange); }
+    .st-tag.p { border-color: rgba(155,127,255,0.3); color: var(--purple); }
+
+    /* PARCOURS */
+    #parcours { background: var(--bg2); }
+
+    .parcours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+
+    .par-col h3 {
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      color: var(--ink-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .dot-g2 { width: 7px; height: 7px; border-radius: 50%; background: var(--green); display: inline-block; box-shadow: 0 0 6px rgba(61,220,132,0.5); }
+
+    .tl { list-style: none; }
+    .tl-item {
+      position: relative;
+      padding-left: 1.5rem;
+      padding-bottom: 2.25rem;
+    }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 7px;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px rgba(61,220,132,0.4);
+    }
+    .tl-item::after {
+      content: '';
+      position: absolute;
+      left: 3px; top: 16px;
+      width: 1px;
+      height: calc(100% - 8px);
+      background: var(--border);
+    }
+    .tl-item:last-child::after { display: none; }
+    .tl-date { font-family: var(--mono); font-size: 0.71rem; color: var(--green); margin-bottom: 0.3rem; }
+    .tl-title { font-weight: 700; font-size: 0.95rem; color: var(--ink); margin-bottom: 0.2rem; }
+    .tl-place { font-size: 0.81rem; color: var(--ink-dim); margin-bottom: 0.4rem; }
+    .tl-desc { font-size: 0.81rem; color: var(--ink-faint); line-height: 1.65; }
+
+    /* CONTACT */
+    #contact { background: var(--bg); }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .contact-big {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      line-height: 1.05;
+      margin-bottom: 1.75rem;
+    }
+    .contact-big span { color: var(--green); }
+
+    .contact-desc { font-size: 0.95rem; color: var(--ink-dim); line-height: 1.7; max-width: 400px; margin-bottom: 2rem; }
+
+    .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+    .c-link {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--ink-dim);
+      font-family: var(--mono);
+      font-size: 0.81rem;
+      transition: border-color .2s, color .2s, background .2s;
+    }
+    .c-link:hover { border-color: var(--green); color: var(--green); background: var(--green-dim); }
+    .c-link .ic { font-size: 1rem; width: 22px; text-align: center; }
+    .c-link .lbl { color: var(--ink-faint); font-size: 0.68rem; display: block; }
+
+    .form-right { display: flex; flex-direction: column; gap: 0.75rem; }
+    .form-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .f-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .f-group label { font-family: var(--mono); font-size: 0.68rem; color: var(--ink-faint); letter-spacing: 0.08em; text-transform: uppercase; }
+    .f-group input, .f-group textarea {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      outline: none;
+      resize: vertical;
+      transition: border-color .2s;
+    }
+    .f-group input::placeholder, .f-group textarea::placeholder { color: var(--ink-faint); }
+    .f-group input:focus, .f-group textarea:focus { border-color: var(--green); }
+    .f-group textarea { min-height: 100px; }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 1.75rem 6vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-faint);
+    }
+    footer .accent { color: var(--green); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .65s, transform .65s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .skills-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .proj-grid { grid-template-columns: 1fr 1fr; }
+      .proj-card.feat { grid-column: span 2; }
+      .parcours-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 1rem 5vw; }
+      .nav-links { display: none; }
+      section { padding: 5rem 5vw; }
+      hr.sep { margin: 0 5vw; }
+      .proj-grid { grid-template-columns: 1fr; }
+      .proj-card.feat { grid-column: span 1; }
+      .sb-row { grid-template-columns: 90px 1fr 30px; }
+      .form-row2 { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#home" class="nav-logo">
+    <span class="prompt">~</span> enes.erdogan <span class="blink"></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#competences"><span class="num">01.</span>compétences</a></li>
+    <li><a href="#projets"><span class="num">02.</span>projets</a></li>
+    <li><a href="#parcours"><span class="num">03.</span>parcours</a></li>
+    <li><a href="#contact"><span class="num">04.</span>contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-inner">
+    <div class="hero-greeting">Bienvenue sur mon portfolio</div>
+    <h1 class="hero-name">Enes<br><span>Erdogan</span></h1>
+    <div class="hero-tags">
+      <span class="hero-tag">BUT Informatique</span>
+      <span class="hero-tag">IUT de Montreuil</span>
+      <span class="hero-tag">Java · Python · C · SQL</span>
+      <span class="hero-tag">Data & IA</span>
+    </div>
+    <p class="hero-desc">
+      Étudiant en 2ème année de BUT Informatique, je construis des solutions concrètes — de l'IA à la data, du web aux systèmes embarqués. Curieux, autonome et toujours en train d'apprendre.
+    </p>
+    <div class="hero-cta">
+      <a href="#projets" class="btn btn-green">voir mes projets →</a>
+      <a href="#contact" class="btn btn-outline">me contacter</a>
+    </div>
+  </div>
+  <div class="scroll-hint">scroll</div>
+</section>
+
+<hr class="sep">
+
+<!-- COMPÉTENCES -->
+<section id="competences">
+  <div class="skills-layout">
+    <div>
+      <div class="s-eye reveal">01 / compétences</div>
+      <h2 class="s-title reveal">Ce que<br>je maîtrise</h2>
+      <p class="s-sub reveal">Un profil polyvalent — de Python à la config réseau, du web aux bases de données.</p>
+      <div class="code-block reveal">
+        <div class="code-header">
+          <span class="dot dot-r"></span>
+          <span class="dot dot-y"></span>
+          <span class="dot dot-g"></span>
+          <span class="cf">enes.stack.py</span>
+        </div>
+        <div class="code-body">
+          <div><span class="cm"># Mon profil</span></div>
+          <div><span class="kw">class</span> <span class="fn">EnesErdogan</span>:</div>
+          <div>&nbsp;&nbsp;<span>formation</span> = <span class="st">"BUT Informatique"</span></div>
+          <div>&nbsp;&nbsp;<span>school</span> &nbsp; = <span class="st">"IUT de Montreuil"</span></div>
+          <div>&nbsp;&nbsp;<span>annee</span> &nbsp;&nbsp; = <span class="nm">2</span></div>
+          <div>&nbsp;</div>
+          <div>&nbsp;&nbsp;<span class="cm"># Langages</span></div>
+          <div>&nbsp;&nbsp;<span>langages</span> = [</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"Java"</span>, <span class="st">"Python"</span>, <span class="st">"C"</span>,</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"SQL"</span>, <span class="st">"HTML/CSS"</span>,</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"PHP"</span>, <span class="st">"Unix"</span></div>
+          <div>&nbsp;&nbsp;]</div>
+          <div>&nbsp;</div>
+          <div>&nbsp;&nbsp;<span class="cm"># Bases de données</span></div>
+          <div>&nbsp;&nbsp;<span>databases</span> = [</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"PostgreSQL"</span>, <span class="st">"MySQL"</span>,</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"MongoDB"</span>, <span class="st">"Big Data"</span></div>
+          <div>&nbsp;&nbsp;]</div>
+          <div>&nbsp;</div>
+          <div>&nbsp;&nbsp;<span class="cm"># Outils</span></div>
+          <div>&nbsp;&nbsp;<span>outils</span> = [</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"IntelliJ"</span>, <span class="st">"CLion"</span>, <span class="st">"PyCharm"</span>,</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"VirtualBox"</span>, <span class="st">"MarionnetteVM"</span>,</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"GitHub"</span>, <span class="st">"Trello"</span>,</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"Microsoft Office"</span>, <span class="st">"Canva"</span>, <span class="st">"CapCut"</span></div>
+          <div>&nbsp;&nbsp;]</div>
+          <div>&nbsp;</div>
+          <div>&nbsp;&nbsp;<span>focus</span> = <span class="st">"Data & IA 🤖"</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" id="skills-bars">
+      <div class="skill-group">
+        <div class="sg-title">langages</div>
+        <div class="skill-bars">
+          <div class="sb-row">
+            <span class="sb-label">Java</span>
+            <div class="bar-track"><div class="bar-fill" data-w="80"></div></div>
+            <span class="sb-pct">80%</span>
+          </div>
+          <div class="sb-row">
+            <span class="sb-label">Python</span>
+            <div class="bar-track"><div class="bar-fill" data-w="70"></div></div>
+            <span class="sb-pct">70%</span>
+          </div>
+          <div class="sb-row">
+            <span class="sb-label">SQL</span>
+            <div class="bar-track"><div class="bar-fill" data-w="80"></div></div>
+            <span class="sb-pct">80%</span>
+          </div>
+          <div class="sb-row">
+            <span class="sb-label">HTML / CSS</span>
+            <div class="bar-track"><div class="bar-fill c" data-w="80"></div></div>
+            <span class="sb-pct">80%</span>
+          </div>
+          <div class="sb-row">
+            <span class="sb-label">C</span>
+            <div class="bar-track"><div class="bar-fill c" data-w="80"></div></div>
+            <span class="sb-pct">80%</span>
+          </div>
+          <div class="sb-row">
+            <span class="sb-label">Unix / Bash</span>
+            <div class="bar-track"><div class="bar-fill c" data-w="80"></div></div>
+            <span class="sb-pct">80%</span>
+          </div>
+          <div class="sb-row">
+            <span class="sb-label">PHP</span>
+            <div class="bar-track"><div class="bar-fill c" data-w="80"></div></div>
+            <span class="sb-pct">80%</span>
+          </div>
+          <div class="sb-row">
+            <span class="sb-label">PHP</span>
+            <div class="bar-track"><div class="bar-fill c" data-w="80"></div></div>
+            <span class="sb-pct">80%</span>
+          </div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="sg-title">bases de données & big data</div>
+        <div class="skill-bars">
+          <div class="sb-row">
+            <span class="sb-label">PostgreSQL</span>
+            <div class="bar-track"><div class="bar-fill o" data-w="80"></div></div>
+            <span class="sb-pct">80%</span>
+          </div>
+          <div class="sb-row">
+            <span class="sb-label">MySQL</span>
+            <div class="bar-track"><div class="bar-fill o" data-w="80"></div></div>
+            <span class="sb-pct">80%</span>
+          </div>
+          <div class="sb-row">
+            <span class="sb-label">MongoDB</span>
+            <div class="bar-track"><div class="bar-fill o" data-w="80"></div></div>
+            <span class="sb-pct">80%</span>
+          </div>
+          <div class="sb-row">
+            <span class="sb-label">Big Data</span>
+            <div class="bar-track"><div class="bar-fill o" data-w="80"></div></div>
+            <span class="sb-pct">80%</span>
+          </div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="sg-title">outils & environnements</div>
+        <div class="skill-bars">
+          <div class="sb-row">
+            <span class="sb-label">IntelliJ IDEA</span>
+            <div class="bar-track"><div class="bar-fill p" data-w="80"></div></div>
+            <span class="sb-pct">80%</span>
+          </div>
+          <div class="sb-row">
+            <span class="sb-label">CLion</span>
+            <div class="bar-track"><div class="bar-fill p" data-w="80"></div></div>
+            <span class="sb-pct">80%</span>
+          </div>
+          <div class="sb-row">
+            <span class="sb-label">PyCharm</span>
+            <div class="bar-track"><div class="bar-fill p" data-w="80"></div></div>
+            <span class="sb-pct">80%</span>
+          </div>
+          <div class="sb-row">
+            <span class="sb-label">VirtualBox</span>
+            <div class="bar-track"><div class="bar-fill p" data-w="80"></div></div>
+            <span class="sb-pct">80%</span>
+          </div>
+          <div class="sb-row">
+            <span class="sb-label">MarionnetteVM</span>
+            <div class="bar-track"><div class="bar-fill p" data-w="80"></div></div>
+            <span class="sb-pct">80%</span>
+          </div>
+          <div class="sb-row">
+            <span class="sb-label">GitHub</span>
+            <div class="bar-track"><div class="bar-fill p" data-w="80"></div></div>
+            <span class="sb-pct">80%</span>
+          </div>
+          <div class="sb-row">
+            <span class="sb-label">Trello</span>
+            <div class="bar-track"><div class="bar-fill p" data-w="80"></div></div>
+            <span class="sb-pct">80%</span>
+          </div>
+          <div class="sb-row">
+            <span class="sb-label">Microsoft Office</span>
+            <div class="bar-track"><div class="bar-fill p" data-w="80"></div></div>
+            <span class="sb-pct">80%</span>
+          </div>
+          <div class="sb-row">
+            <span class="sb-label">Canva / CapCut</span>
+            <div class="bar-track"><div class="bar-fill p" data-w="80"></div></div>
+            <span class="sb-pct">80%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- PROJETS -->
+<section id="projets">
+  <div class="s-eye reveal">02 / projets</div>
+  <h2 class="s-title reveal">Ce que j'ai construit</h2>
+  <p class="s-sub reveal">Du BUT et du Bac — des projets concrets qui m'ont appris l'essentiel.</p>
+
+  <div class="proj-grid">
+    <div class="proj-card feat reveal">
+      <div class="proj-top">
+        <span class="proj-icon">🤖</span>
+        <span class="proj-year">BUT 2 · 2024–2025</span>
+      </div>
+      <h3>IA — Optimisation des trajets infirmiers à Paris</h3>
+      <p>Intelligence artificielle pour simplifier et optimiser les tournées des infirmiers libéraux en Île-de-France. Algorithme de routage appliqué à un cas concret — réduction des distances et meilleure gestion du planning.</p>
+      <div class="proj-stack">
+        <span class="st-tag g">Python</span>
+        <span class="st-tag g">Machine Learning</span>
+        <span class="st-tag g">Optimisation</span>
+        <span class="st-tag">Algo</span>
+      </div>
+    </div>
+
+    <div class="proj-card reveal">
+      <div class="proj-top">
+        <span class="proj-icon">🎮</span>
+        <span class="proj-year">BUT 1 · 2023–2024</span>
+      </div>
+      <h3>Puissance 4 — IA multi-niveaux en Java</h3>
+      <p>Jeu Puissance 4 avec plusieurs niveaux d'IA progressifs. Minimax, élagage alpha-bêta et heuristiques maison.</p>
+      <div class="proj-stack">
+        <span class="st-tag c">Java</span>
+        <span class="st-tag c">Minimax</span>
+        <span class="st-tag">POO</span>
+      </div>
+    </div>
+
+    <div class="proj-card reveal">
+      <div class="proj-top">
+        <span class="proj-icon">🏅</span>
+        <span class="proj-year">BUT · 2024</span>
+      </div>
+      <h3>Site web — Jeux Olympiques 2028</h3>
+      <p>Site web inspiré des JO de Paris, adapté pour Los Angeles 2028. Interface soignée et contenu dynamique.</p>
+      <div class="proj-stack">
+        <span class="st-tag c">HTML/CSS</span>
+        <span class="st-tag c">JavaScript</span>
+        <span class="st-tag">Web</span>
+      </div>
+    </div>
+
+    <div class="proj-card reveal">
+      <div class="proj-top">
+        <span class="proj-icon">🗄️</span>
+        <span class="proj-year">BUT 1 · 2023</span>
+      </div>
+      <h3>Base de données — Jeu de survie</h3>
+      <p>Conception complète pour un jeu de survie : MCD, MCT et script SQL. Modélisation des joueurs, ressources, événements et inventaires.</p>
+      <div class="proj-stack">
+        <span class="st-tag o">SQL</span>
+        <span class="st-tag o">MCD / MCT</span>
+        <span class="st-tag">Modélisation</span>
+      </div>
+    </div>
+
+    <div class="proj-card reveal">
+      <div class="proj-top">
+        <span class="proj-icon">🌿</span>
+        <span class="proj-year">Bac STI2D · 2022–2024</span>
+      </div>
+      <h3>Serre autonome — Raspberry Pi</h3>
+      <p>Conception et réalisation d'une serre intelligente. Pilotage automatique de l'irrigation, ventilation et luminosité via capteurs.</p>
+      <div class="proj-stack">
+        <span class="st-tag p">Raspberry Pi</span>
+        <span class="st-tag p">Python</span>
+        <span class="st-tag p">Embarqué</span>
+        <span class="st-tag">IoT</span>
+      </div>
+    </div>
+
+    <div class="proj-card reveal">
+      <div class="proj-top">
+        <span class="proj-icon">🖥️</span>
+        <span class="proj-year">BUT · Réseau & Archi</span>
+      </div>
+      <h3>Virtualisation — Machine virtuelle Ubuntu</h3>
+      <p>Création et configuration approfondie de machines virtuelles sous VirtualBox et MarionnetteVM. Installation d'Ubuntu, configuration réseau, déploiement de logiciels et gestion de l'environnement système en ligne de commande Unix.</p>
+      <div class="proj-stack">
+        <span class="st-tag p">VirtualBox</span>
+        <span class="st-tag p">MarionnetteVM</span>
+        <span class="st-tag p">Ubuntu</span>
+        <span class="st-tag">Unix</span>
+        <span class="st-tag">Réseau</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- PARCOURS -->
+<section id="parcours">
+  <div class="s-eye reveal">03 / parcours</div>
+  <h2 class="s-title reveal">Formation &<br>expériences</h2>
+  <p class="s-sub reveal">Ce qui m'a construit jusqu'ici.</p>
+
+  <div class="parcours-grid">
+    <div class="par-col reveal">
+      <h3><span class="dot-g2"></span>&nbsp; Formation</h3>
+      <ul class="tl">
+        <li class="tl-item">
+          <div class="tl-date">2023 — Aujourd'hui</div>
+          <div class="tl-title">BUT Informatique</div>
+          <div class="tl-place">IUT de Montreuil · Université Paris 8</div>
+          <div class="tl-desc">Parcours Déploiement d'applications communicantes. Dev logiciel, data, réseaux, BDD et IA. Projets en équipe sur des cas concrets.</div>
+        </li>
+        <li class="tl-item">
+          <div class="tl-date">2022 — 2024</div>
+          <div class="tl-title">Baccalauréat STI2D</div>
+          <div class="tl-place">Sciences et Technologies de l'Industrie et du Développement Durable</div>
+          <div class="tl-desc">Spécialité technique axée programmation et systèmes embarqués. Projet de serre autonome avec Raspberry Pi en pratique.</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="par-col reveal">
+      <h3><span class="dot-g2"></span>&nbsp; Expériences</h3>
+      <ul class="tl">
+
+        <li class="tl-item">
+          <div class="tl-date">En parallèle</div>
+          <div class="tl-title">Professeur particulier</div>
+          <div class="tl-place">Indépendant · Île-de-France</div>
+          <div class="tl-desc">Cours particuliers en Mathématiques, Sciences, Anglais et Italien auprès d'élèves de différents niveaux. Pédagogie adaptée, suivi personnalisé et progression régulière.</div>
+        </li>
+        <li class="tl-item">
+          <div class="tl-date">En parallèle</div>
+          <div class="tl-title">Coiffeur</div>
+          <div class="tl-place">Indépendant</div>
+          <div class="tl-desc">Activité de coiffure en parallèle des études — sens du service, écoute client et précision du geste.</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-layout">
+    <div class="reveal">
+      <div class="s-eye">04 / contact</div>
+      <div class="contact-big">Travaillons<br><span>ensemble.</span></div>
+      <p class="contact-desc">Ouvert aux opportunités de stage, alternance et collaborations data/IA. N'hésite pas.</p>
+      <div class="contact-links">
+        <a href="mailto:enes.erdogan@protonmail.com" class="c-link">
+          <span class="ic">✉</span>
+          <div><span class="lbl">Email</span>enes.erdogan@protonmail.com</div>
+        </a>
+        <a href="#" class="c-link">
+          <span class="ic">in</span>
+          <div><span class="lbl">LinkedIn</span>linkedin.com/in/enes-erdogan</div>
+        </a>
+        <a href="https://github.com/Enesss00" target="_blank" class="c-link">
+          <span class="ic">⌥</span>
+          <div><span class="lbl">GitHub</span>github.com/Enesss00</div>
+        </a>
+        <a href="#" class="c-link">
+          <span class="ic">📍</span>
+          <div><span class="lbl">Localisation</span>Île-de-France</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="form-right reveal">
+      <div class="form-row2">
+        <div class="f-group">
+          <label>Prénom</label>
+          <input type="text" placeholder="Jean">
+        </div>
+        <div class="f-group">
+          <label>Nom</label>
+          <input type="text" placeholder="Dupont">
+        </div>
+      </div>
+      <div class="f-group">
+        <label>Email</label>
+        <input type="email" placeholder="jean@exemple.com">
+      </div>
+      <div class="f-group">
+        <label>Message</label>
+        <textarea placeholder="Bonjour Enes..."></textarea>
+      </div>
+      <button class="btn btn-green" style="width:100%; justify-content:center;">envoyer →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 <span class="accent">Enes Erdogan</span></span>
+  <span>BUT Informatique · IUT Montreuil</span>
+</footer>
+
+<script>
+  // Nav scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Reveal
+  const revObs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 70);
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+  // Progress bars — on observe chaque barre individuellement
+  const barObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.width = entry.target.getAttribute('data-w') + '%';
+        barObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+
+  document.querySelectorAll('.bar-fill').forEach(bar => barObs.observe(bar));
+</script>
+</body>
+</html>
