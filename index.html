@@ -24,10 +24,8 @@
       --mono: 'JetBrains Mono', monospace;
       --display: 'Bricolage Grotesque', sans-serif;
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--bg);
       color: var(--ink);
@@ -36,12 +34,10 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
-
     ::selection { background: var(--green); color: #000; }
     ::-webkit-scrollbar { width: 3px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--green); }
-
     /* NAV */
     nav {
       position: fixed;
@@ -59,7 +55,6 @@
       border-color: var(--border);
       backdrop-filter: blur(20px);
     }
-
     .nav-logo {
       font-family: var(--mono);
       font-size: 0.88rem;
@@ -79,7 +74,6 @@
       animation: blink 1.1s step-end infinite;
     }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-
     .nav-links {
       display: flex;
       gap: 2.5rem;
@@ -94,7 +88,6 @@
     }
     .nav-links a:hover { color: var(--green); }
     .num { color: var(--green); margin-right: 0.2rem; font-size: 0.72rem; }
-
     /* HERO */
     #home {
       min-height: 100vh;
@@ -116,13 +109,11 @@
       opacity: 0.22;
       mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
     }
-
     .hero-inner {
       position: relative;
       z-index: 1;
       max-width: 860px;
     }
-
     .hero-greeting {
       font-family: var(--mono);
       font-size: 0.82rem;
@@ -132,7 +123,6 @@
       animation: fadeUp .6s .2s forwards;
     }
     .hero-greeting::before { content: '// '; opacity: 0.5; }
-
     .hero-name {
       font-family: var(--display);
       font-weight: 800;
@@ -145,7 +135,6 @@
       animation: fadeUp .6s .35s forwards;
     }
     .hero-name span { color: var(--green); }
-
     .hero-tags {
       display: flex;
       flex-wrap: wrap;
@@ -163,7 +152,6 @@
       padding: 0.25rem 0.7rem;
       border-radius: 4px;
     }
-
     .hero-desc {
       font-size: 1rem;
       color: var(--ink-dim);
@@ -173,7 +161,6 @@
       opacity: 0;
       animation: fadeUp .6s .65s forwards;
     }
-
     .hero-cta {
       display: flex;
       gap: 1rem;
@@ -181,7 +168,6 @@
       opacity: 0;
       animation: fadeUp .6s .8s forwards;
     }
-
     .btn {
       font-family: var(--mono);
       font-size: 0.82rem;
@@ -200,7 +186,6 @@
     .btn-green:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(61,220,132,0.3); }
     .btn-outline { background: transparent; color: var(--ink-dim); border: 1px solid var(--border); }
     .btn-outline:hover { color: var(--ink); border-color: var(--ink-dim); background: var(--surface); }
-
     .scroll-hint {
       position: absolute;
       bottom: 2.5rem; left: 6vw;
@@ -219,15 +204,12 @@
       width: 1px; height: 36px;
       background: linear-gradient(to bottom, transparent, var(--ink-faint));
     }
-
     @keyframes fadeUp {
       from { opacity:0; transform:translateY(18px); }
       to   { opacity:1; transform:translateY(0); }
     }
-
     /* SECTIONS */
     section { padding: 7rem 6vw; }
-
     .s-eye {
       font-family: var(--mono);
       font-size: 0.74rem;
@@ -244,7 +226,6 @@
       background: var(--green);
       opacity: 0.45;
     }
-
     .s-title {
       font-family: var(--display);
       font-weight: 800;
@@ -254,7 +235,6 @@
       line-height: 1.05;
       margin-bottom: 1rem;
     }
-
     .s-sub {
       font-size: 1rem;
       color: var(--ink-dim);
@@ -262,19 +242,15 @@
       line-height: 1.7;
       margin-bottom: 3.5rem;
     }
-
     hr.sep { border: none; border-top: 1px solid var(--border); margin: 0 6vw; }
-
     /* SKILLS */
     #competences { background: var(--bg2); }
-
     .skills-layout {
       display: grid;
       grid-template-columns: 1fr 1.6fr;
       gap: 6rem;
       align-items: start;
     }
-
     .code-block {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -303,7 +279,6 @@
     .st  { color: var(--orange); }
     .cm  { color: var(--ink-faint); }
     .nm  { color: var(--green); }
-
     .skill-group { margin-bottom: 2.5rem; }
     .sg-title {
       font-family: var(--mono);
@@ -334,16 +309,13 @@
     .bar-fill.o { background: var(--orange); }
     .bar-fill.p { background: var(--purple); }
     .sb-pct { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-faint); text-align: right; }
-
     /* PROJETS */
     #projets { background: var(--bg); }
-
     .proj-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.25rem;
     }
-
     .proj-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -367,17 +339,14 @@
     }
     .proj-card:hover { border-color: var(--ink-faint); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
     .proj-card:hover::after { transform: scaleX(1); }
-
     .proj-card.feat { grid-column: span 2; border-color: rgba(61,220,132,0.2); }
     .proj-card.feat::after { background: var(--green); }
     .proj-card:not(.feat)::after { background: var(--cyan); }
-
     .proj-top { display: flex; justify-content: space-between; align-items: flex-start; }
     .proj-icon { font-size: 1.6rem; line-height: 1; }
     .proj-year { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-faint); }
     .proj-card h3 { font-family: var(--display); font-weight: 700; font-size: 1rem; color: var(--ink); line-height: 1.3; }
     .proj-card p { font-size: 0.84rem; color: var(--ink-dim); line-height: 1.65; flex: 1; }
-
     .proj-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; }
     .st-tag {
       font-family: var(--mono);
@@ -391,12 +360,9 @@
     .st-tag.c { border-color: rgba(0,217,255,0.3); color: var(--cyan); }
     .st-tag.o { border-color: rgba(255,140,66,0.3); color: var(--orange); }
     .st-tag.p { border-color: rgba(155,127,255,0.3); color: var(--purple); }
-
     /* PARCOURS */
     #parcours { background: var(--bg2); }
-
     .parcours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
-
     .par-col h3 {
       font-family: var(--mono);
       font-size: 0.76rem;
@@ -407,7 +373,6 @@
       display: flex; align-items: center; gap: 0.5rem;
     }
     .dot-g2 { width: 7px; height: 7px; border-radius: 50%; background: var(--green); display: inline-block; box-shadow: 0 0 6px rgba(61,220,132,0.5); }
-
     .tl { list-style: none; }
     .tl-item {
       position: relative;
@@ -437,17 +402,14 @@
     .tl-title { font-weight: 700; font-size: 0.95rem; color: var(--ink); margin-bottom: 0.2rem; }
     .tl-place { font-size: 0.81rem; color: var(--ink-dim); margin-bottom: 0.4rem; }
     .tl-desc { font-size: 0.81rem; color: var(--ink-faint); line-height: 1.65; }
-
     /* CONTACT */
     #contact { background: var(--bg); }
-
     .contact-layout {
       display: grid;
       grid-template-columns: 1.1fr 1fr;
       gap: 6rem;
       align-items: start;
     }
-
     .contact-big {
       font-family: var(--display);
       font-weight: 800;
@@ -458,9 +420,7 @@
       margin-bottom: 1.75rem;
     }
     .contact-big span { color: var(--green); }
-
     .contact-desc { font-size: 0.95rem; color: var(--ink-dim); line-height: 1.7; max-width: 400px; margin-bottom: 2rem; }
-
     .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
     .c-link {
       display: flex; align-items: center; gap: 1rem;
@@ -477,7 +437,6 @@
     .c-link:hover { border-color: var(--green); color: var(--green); background: var(--green-dim); }
     .c-link .ic { font-size: 1rem; width: 22px; text-align: center; }
     .c-link .lbl { color: var(--ink-faint); font-size: 0.68rem; display: block; }
-
     .form-right { display: flex; flex-direction: column; gap: 0.75rem; }
     .form-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
     .f-group { display: flex; flex-direction: column; gap: 0.4rem; }
@@ -497,7 +456,6 @@
     .f-group input::placeholder, .f-group textarea::placeholder { color: var(--ink-faint); }
     .f-group input:focus, .f-group textarea:focus { border-color: var(--green); }
     .f-group textarea { min-height: 100px; }
-
     /* FOOTER */
     footer {
       background: var(--bg);
@@ -511,11 +469,9 @@
       color: var(--ink-faint);
     }
     footer .accent { color: var(--green); }
-
     /* REVEAL */
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity .65s, transform .65s; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-
     /* RESPONSIVE */
     @media (max-width: 1024px) {
       .skills-layout { grid-template-columns: 1fr; gap: 3rem; }
@@ -538,7 +494,6 @@
   </style>
 </head>
 <body>
-
 <!-- NAV -->
 <nav id="nav">
   <a href="#home" class="nav-logo">
@@ -551,7 +506,6 @@
     <li><a href="#contact"><span class="num">04.</span>contact</a></li>
   </ul>
 </nav>
-
 <!-- HERO -->
 <section id="home">
   <div class="hero-inner">
@@ -573,9 +527,7 @@
   </div>
   <div class="scroll-hint">scroll</div>
 </section>
-
 <hr class="sep">
-
 <!-- COMPÉTENCES -->
 <section id="competences">
   <div class="skills-layout">
@@ -622,135 +574,134 @@
         </div>
       </div>
     </div>
-
     <div class="reveal" id="skills-bars">
+      <!-- LANGAGES -->
       <div class="skill-group">
         <div class="sg-title">langages</div>
         <div class="skill-bars">
           <div class="sb-row">
             <span class="sb-label">Java</span>
             <div class="bar-track"><div class="bar-fill" data-w="80"></div></div>
-            <span class="sb-pct">79%</span>
+            <span class="sb-pct">80%</span>
           </div>
           <div class="sb-row">
             <span class="sb-label">Python</span>
-            <div class="bar-track"><div class="bar-fill" data-w="70"></div></div>
-            <span class="sb-pct">70%</span>
+            <div class="bar-track"><div class="bar-fill" data-w="66"></div></div>
+            <span class="sb-pct">66%</span>
           </div>
           <div class="sb-row">
             <span class="sb-label">SQL</span>
             <div class="bar-track"><div class="bar-fill" data-w="80"></div></div>
-            <span class="sb-pct">76%</span>
+            <span class="sb-pct">80%</span>
           </div>
           <div class="sb-row">
             <span class="sb-label">HTML / CSS</span>
-            <div class="bar-track"><div class="bar-fill c" data-w="80"></div></div>
-            <span class="sb-pct">71%</span>
+            <div class="bar-track"><div class="bar-fill c" data-w="75"></div></div>
+            <span class="sb-pct">75%</span>
           </div>
           <div class="sb-row">
             <span class="sb-label">C</span>
-            <div class="bar-track"><div class="bar-fill c" data-w="80"></div></div>
+            <div class="bar-track"><div class="bar-fill c" data-w="68"></div></div>
             <span class="sb-pct">68%</span>
           </div>
           <div class="sb-row">
             <span class="sb-label">Unix / Bash</span>
-            <div class="bar-track"><div class="bar-fill c" data-w="80"></div></div>
-            <span class="sb-pct">84%</span>
+            <div class="bar-track"><div class="bar-fill c" data-w="82"></div></div>
+            <span class="sb-pct">82%</span>
           </div>
           <div class="sb-row">
             <span class="sb-label">PHP</span>
-            <div class="bar-track"><div class="bar-fill c" data-w="80"></div></div>
-            <span class="sb-pct">24%</span>
+            <div class="bar-track"><div class="bar-fill c" data-w="70"></div></div>
+            <span class="sb-pct">70%</span>
           </div>
         </div>
       </div>
+      <!-- BASES DE DONNÉES -->
       <div class="skill-group">
         <div class="sg-title">bases de données & big data</div>
         <div class="skill-bars">
           <div class="sb-row">
             <span class="sb-label">PostgreSQL</span>
-            <div class="bar-track"><div class="bar-fill o" data-w="80"></div></div>
-            <span class="sb-pct">80%</span>
+            <div class="bar-track"><div class="bar-fill o" data-w="82"></div></div>
+            <span class="sb-pct">82%</span>
           </div>
           <div class="sb-row">
             <span class="sb-label">MySQL</span>
-            <div class="bar-track"><div class="bar-fill o" data-w="80"></div></div>
-            <span class="sb-pct">80%</span>
+            <div class="bar-track"><div class="bar-fill o" data-w="78"></div></div>
+            <span class="sb-pct">78%</span>
           </div>
           <div class="sb-row">
             <span class="sb-label">MongoDB</span>
-            <div class="bar-track"><div class="bar-fill o" data-w="80"></div></div>
-            <span class="sb-pct">80%</span>
+            <div class="bar-track"><div class="bar-fill o" data-w="72"></div></div>
+            <span class="sb-pct">72%</span>
           </div>
           <div class="sb-row">
             <span class="sb-label">Big Data</span>
-            <div class="bar-track"><div class="bar-fill o" data-w="80"></div></div>
-            <span class="sb-pct">80%</span>
+            <div class="bar-track"><div class="bar-fill o" data-w="65"></div></div>
+            <span class="sb-pct">65%</span>
           </div>
         </div>
       </div>
+      <!-- OUTILS -->
       <div class="skill-group">
         <div class="sg-title">outils & environnements</div>
         <div class="skill-bars">
           <div class="sb-row">
             <span class="sb-label">IntelliJ IDEA</span>
-            <div class="bar-track"><div class="bar-fill p" data-w="80"></div></div>
-            <span class="sb-pct">80%</span>
-          </div>
-          <div class="sb-row">
-            <span class="sb-label">CLion</span>
-            <div class="bar-track"><div class="bar-fill p" data-w="80"></div></div>
-            <span class="sb-pct">80%</span>
+            <div class="bar-track"><div class="bar-fill p" data-w="88"></div></div>
+            <span class="sb-pct">88%</span>
           </div>
           <div class="sb-row">
             <span class="sb-label">PyCharm</span>
-            <div class="bar-track"><div class="bar-fill p" data-w="80"></div></div>
-            <span class="sb-pct">80%</span>
+            <div class="bar-track"><div class="bar-fill p" data-w="84"></div></div>
+            <span class="sb-pct">84%</span>
           </div>
           <div class="sb-row">
-            <span class="sb-label">VirtualBox</span>
-            <div class="bar-track"><div class="bar-fill p" data-w="80"></div></div>
-            <span class="sb-pct">80%</span>
-          </div>
-          <div class="sb-row">
-            <span class="sb-label">MarionnetteVM</span>
-            <div class="bar-track"><div class="bar-fill p" data-w="80"></div></div>
-            <span class="sb-pct">80%</span>
+            <span class="sb-label">CLion</span>
+            <div class="bar-track"><div class="bar-fill p" data-w="76"></div></div>
+            <span class="sb-pct">76%</span>
           </div>
           <div class="sb-row">
             <span class="sb-label">GitHub</span>
-            <div class="bar-track"><div class="bar-fill p" data-w="80"></div></div>
-            <span class="sb-pct">80%</span>
+            <div class="bar-track"><div class="bar-fill p" data-w="85"></div></div>
+            <span class="sb-pct">85%</span>
+          </div>
+          <div class="sb-row">
+            <span class="sb-label">VirtualBox</span>
+            <div class="bar-track"><div class="bar-fill p" data-w="78"></div></div>
+            <span class="sb-pct">78%</span>
+          </div>
+          <div class="sb-row">
+            <span class="sb-label">MarionnetteVM</span>
+            <div class="bar-track"><div class="bar-fill p" data-w="74"></div></div>
+            <span class="sb-pct">74%</span>
           </div>
           <div class="sb-row">
             <span class="sb-label">Trello</span>
-            <div class="bar-track"><div class="bar-fill p" data-w="80"></div></div>
-            <span class="sb-pct">80%</span>
+            <div class="bar-track"><div class="bar-fill p" data-w="88"></div></div>
+            <span class="sb-pct">88%</span>
           </div>
           <div class="sb-row">
             <span class="sb-label">Microsoft Office</span>
-            <div class="bar-track"><div class="bar-fill p" data-w="80"></div></div>
-            <span class="sb-pct">80%</span>
+            <div class="bar-track"><div class="bar-fill p" data-w="90"></div></div>
+            <span class="sb-pct">90%</span>
           </div>
           <div class="sb-row">
             <span class="sb-label">Canva / CapCut</span>
-            <div class="bar-track"><div class="bar-fill p" data-w="80"></div></div>
-            <span class="sb-pct">80%</span>
+            <div class="bar-track"><div class="bar-fill p" data-w="82"></div></div>
+            <span class="sb-pct">82%</span>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
 <hr class="sep">
-
 <!-- PROJETS -->
 <section id="projets">
   <div class="s-eye reveal">02 / projets</div>
   <h2 class="s-title reveal">Ce que j'ai construit</h2>
-  <p class="s-sub reveal">Du BUT et du Bac — des projets concrets qui m'ont appris l'essentiel.</p>
-
+  <p class="s-sub reveal">Projets académiques et personnels — du BUT jusqu'au Bac.</p>
   <div class="proj-grid">
     <div class="proj-card feat reveal">
       <div class="proj-top">
@@ -766,7 +717,6 @@
         <span class="st-tag">Algo</span>
       </div>
     </div>
-
     <div class="proj-card reveal">
       <div class="proj-top">
         <span class="proj-icon">🎮</span>
@@ -780,7 +730,6 @@
         <span class="st-tag">POO</span>
       </div>
     </div>
-
     <div class="proj-card reveal">
       <div class="proj-top">
         <span class="proj-icon">🏅</span>
@@ -794,7 +743,6 @@
         <span class="st-tag">Web</span>
       </div>
     </div>
-
     <div class="proj-card reveal">
       <div class="proj-top">
         <span class="proj-icon">🗄️</span>
@@ -808,7 +756,6 @@
         <span class="st-tag">Modélisation</span>
       </div>
     </div>
-
     <div class="proj-card reveal">
       <div class="proj-top">
         <span class="proj-icon">🌿</span>
@@ -823,7 +770,6 @@
         <span class="st-tag">IoT</span>
       </div>
     </div>
-
     <div class="proj-card reveal">
       <div class="proj-top">
         <span class="proj-icon">🖥️</span>
@@ -841,15 +787,12 @@
     </div>
   </div>
 </section>
-
 <hr class="sep">
-
 <!-- PARCOURS -->
 <section id="parcours">
   <div class="s-eye reveal">03 / parcours</div>
   <h2 class="s-title reveal">Formation &<br>expériences</h2>
   <p class="s-sub reveal">Ce qui m'a construit jusqu'ici.</p>
-
   <div class="parcours-grid">
     <div class="par-col reveal">
       <h3><span class="dot-g2"></span>&nbsp; Formation</h3>
@@ -868,11 +811,9 @@
         </li>
       </ul>
     </div>
-
     <div class="par-col reveal">
       <h3><span class="dot-g2"></span>&nbsp; Expériences</h3>
       <ul class="tl">
-
         <li class="tl-item">
           <div class="tl-date">En parallèle</div>
           <div class="tl-title">Professeur particulier</div>
@@ -889,9 +830,7 @@
     </div>
   </div>
 </section>
-
 <hr class="sep">
-
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-layout">
@@ -906,7 +845,7 @@
         </a>
         <a href="#" class="c-link">
           <span class="ic">in</span>
-          <div><span class="lbl">LinkedIn</span>linkedin.com/in/enes-erdogan</div>
+          <div><span class="lbl">LinkedIn</span>linkedin.com/in/enes-erdogann</div>
         </a>
         <a href="https://github.com/Enesss00" target="_blank" class="c-link">
           <span class="ic">⌥</span>
@@ -918,7 +857,6 @@
         </a>
       </div>
     </div>
-
     <div class="form-right reveal">
       <div class="form-row2">
         <div class="f-group">
@@ -942,28 +880,21 @@
     </div>
   </div>
 </section>
-
 <!-- FOOTER -->
 <footer>
   <span>© 2025 <span class="accent">Enes Erdogan</span></span>
   <span>BUT Informatique · IUT Montreuil</span>
 </footer>
-
 <script>
-  // Nav scroll
   window.addEventListener('scroll', () => {
     document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
   });
-
-  // Reveal
   const revObs = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 70);
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
-
-  // Progress bars — on observe chaque barre individuellement
   const barObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -972,7 +903,6 @@
       }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
-
   document.querySelectorAll('.bar-fill').forEach(bar => barObs.observe(bar));
 </script>
 </body>
