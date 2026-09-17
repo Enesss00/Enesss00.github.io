@@ -38,6 +38,7 @@
     ::-webkit-scrollbar { width: 3px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--green); }
+
     /* NAV */
     nav {
       position: fixed;
@@ -74,11 +75,7 @@
       animation: blink 1.1s step-end infinite;
     }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a {
       font-family: var(--mono);
       font-size: 0.78rem;
@@ -88,6 +85,7 @@
     }
     .nav-links a:hover { color: var(--green); }
     .num { color: var(--green); margin-right: 0.2rem; font-size: 0.72rem; }
+
     /* HERO */
     #home {
       min-height: 100vh;
@@ -109,18 +107,12 @@
       opacity: 0.22;
       mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
     }
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      max-width: 860px;
-    }
+    .hero-inner { position: relative; z-index: 1; max-width: 860px; }
     .hero-greeting {
       font-family: var(--mono);
       font-size: 0.82rem;
       color: var(--green);
       margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeUp .6s .2s forwards;
     }
     .hero-greeting::before { content: '// '; opacity: 0.5; }
     .hero-name {
@@ -131,8 +123,6 @@
       letter-spacing: -0.04em;
       color: var(--ink);
       margin-bottom: 0.75rem;
-      opacity: 0;
-      animation: fadeUp .6s .35s forwards;
     }
     .hero-name span { color: var(--green); }
     .hero-tags {
@@ -140,8 +130,6 @@
       flex-wrap: wrap;
       gap: 0.5rem;
       margin-bottom: 2rem;
-      opacity: 0;
-      animation: fadeUp .6s .5s forwards;
     }
     .hero-tag {
       font-family: var(--mono);
@@ -158,16 +146,8 @@
       max-width: 540px;
       margin-bottom: 2.5rem;
       line-height: 1.75;
-      opacity: 0;
-      animation: fadeUp .6s .65s forwards;
     }
-    .hero-cta {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeUp .6s .8s forwards;
-    }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
     .btn {
       font-family: var(--mono);
       font-size: 0.82rem;
@@ -195,8 +175,6 @@
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      opacity: 0;
-      animation: fadeUp .6s 1.1s forwards;
     }
     .scroll-hint::before {
       content: '';
@@ -204,10 +182,7 @@
       width: 1px; height: 36px;
       background: linear-gradient(to bottom, transparent, var(--ink-faint));
     }
-    @keyframes fadeUp {
-      from { opacity:0; transform:translateY(18px); }
-      to   { opacity:1; transform:translateY(0); }
-    }
+
     /* SECTIONS */
     section { padding: 7rem 6vw; }
     .s-eye {
@@ -220,12 +195,7 @@
       align-items: center;
       gap: 0.75rem;
     }
-    .s-eye::after {
-      content: '';
-      flex: 0 0 36px; height: 1px;
-      background: var(--green);
-      opacity: 0.45;
-    }
+    .s-eye::after { content: ''; flex: 0 0 36px; height: 1px; background: var(--green); opacity: 0.45; }
     .s-title {
       font-family: var(--display);
       font-weight: 800;
@@ -243,7 +213,8 @@
       margin-bottom: 3.5rem;
     }
     hr.sep { border: none; border-top: 1px solid var(--border); margin: 0 6vw; }
-    /* SKILLS */
+
+    /* COMPÉTENCES */
     #competences { background: var(--bg2); }
     .skills-layout {
       display: grid;
@@ -274,135 +245,64 @@
     .dot-g { background: #28CA41; }
     .cf { color: var(--ink-faint); font-size: 0.74rem; margin-left: 0.4rem; }
     .code-body { padding: 1.2rem 1.5rem; line-height: 2.1; }
-    .kw  { color: var(--purple); }
-    .fn  { color: var(--cyan); }
-    .st  { color: var(--orange); }
-    .cm  { color: var(--ink-faint); }
-    .nm  { color: var(--green); }
-    .skill-group { margin-bottom: 2.5rem; }
-    .sg-title {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--ink-dim);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--border);
+    .kw { color: var(--purple); }
+    .fn { color: var(--cyan); }
+    .st { color: var(--orange); }
+    .cm { color: var(--ink-faint); }
+    .nm { color: var(--green); }
+
+    /* Cartes compétences simplifiées */
+    .comp-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
-    .skill-bars { display: flex; flex-direction: column; gap: 0.75rem; }
-    .sb-row {
-      display: grid;
-      grid-template-columns: 130px 1fr 36px;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .sb-label { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-dim); }
-    .bar-track { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
-    .bar-fill {
-      height: 100%; border-radius: 2px;
-      background: var(--green);
-      width: 0;
-      transition: width 1.2s cubic-bezier(.4,0,.2,1);
-    }
-    .bar-fill.c { background: var(--cyan); }
-    .bar-fill.o { background: var(--orange); }
-    .bar-fill.p { background: var(--purple); }
-    .sb-pct { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-faint); text-align: right; }
-    /* CARTES COMPÉTENCES */
     .comp-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 1.5rem;
-      margin-bottom: 1.25rem;
-      transition: border-color .25s, transform .25s;
+      padding: 1.25rem 1.5rem;
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+      transition: border-color .2s;
     }
-    .comp-card:hover {
-      border-color: var(--green);
-      transform: translateX(4px);
-    }
-    .comp-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-    .comp-icon { font-size: 1.5rem; line-height: 1; flex-shrink: 0; margin-top: 2px; }
+    .comp-card:hover { border-color: var(--green); }
+    .comp-left { display: flex; flex-direction: column; gap: 0.3rem; }
+    .comp-icon { font-size: 1.2rem; }
     .comp-title {
       font-family: var(--display);
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 0.95rem;
       color: var(--ink);
-      margin-bottom: 0.3rem;
     }
     .comp-desc {
-      font-size: 0.8rem;
-      color: var(--ink-dim);
-      line-height: 1.55;
-    }
-    .comp-ce {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 1.1rem;
-    }
-    .ce-tag {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      padding: 0.2rem 0.55rem;
-      border-radius: 4px;
-      border: 1px solid var(--ink-faint);
-      color: var(--ink-faint);
-    }
-    .comp-situations {
-      margin-bottom: 1rem;
-    }
-    .sit-title {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--green);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 0.3rem;
-    }
-    .sit-list {
       font-size: 0.78rem;
       color: var(--ink-dim);
       line-height: 1.5;
     }
-    .comp-niveaux {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin-bottom: 1.1rem;
-    }
-    .niveau-block {
-      background: var(--surface2);
-      border-radius: 6px;
-      padding: 0.75rem 1rem;
-    }
-    .niveau-label {
+    .comp-right { display: flex; flex-direction: column; gap: 0.75rem; }
+    .ce-row { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .ce-badge {
       font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--cyan);
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-    }
-    .niveau-acs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-    }
-    .ac-tag {
-      font-family: var(--mono);
-      font-size: 0.62rem;
+      font-size: 0.63rem;
+      color: var(--green);
+      border: 1px solid rgba(61,220,132,0.2);
+      background: var(--green-dim);
       padding: 0.15rem 0.5rem;
-      border-radius: 4px;
-      background: rgba(0,217,255,0.06);
-      border: 1px solid rgba(0,217,255,0.15);
-      color: var(--ink-dim);
+      border-radius: 3px;
     }
+    .outils-row { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .outil-badge {
+      font-family: var(--mono);
+      font-size: 0.63rem;
+      color: var(--ink-dim);
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+    }
+
     /* PROJETS */
     #projets { background: var(--bg); }
     .proj-grid {
@@ -454,6 +354,7 @@
     .st-tag.c { border-color: rgba(0,217,255,0.3); color: var(--cyan); }
     .st-tag.o { border-color: rgba(255,140,66,0.3); color: var(--orange); }
     .st-tag.p { border-color: rgba(155,127,255,0.3); color: var(--purple); }
+
     /* PARCOURS */
     #parcours { background: var(--bg2); }
     .parcours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
@@ -496,6 +397,7 @@
     .tl-title { font-weight: 700; font-size: 0.95rem; color: var(--ink); margin-bottom: 0.2rem; }
     .tl-place { font-size: 0.81rem; color: var(--ink-dim); margin-bottom: 0.4rem; }
     .tl-desc { font-size: 0.81rem; color: var(--ink-faint); line-height: 1.65; }
+
     /* CONTACT */
     #contact { background: var(--bg); }
     .contact-layout {
@@ -550,6 +452,7 @@
     .f-group input::placeholder, .f-group textarea::placeholder { color: var(--ink-faint); }
     .f-group input:focus, .f-group textarea:focus { border-color: var(--green); }
     .f-group textarea { min-height: 100px; }
+
     /* FOOTER */
     footer {
       background: var(--bg);
@@ -563,12 +466,11 @@
       color: var(--ink-faint);
     }
     footer .accent { color: var(--green); }
-    /* REVEAL */
-    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .65s, transform .65s; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+
     /* RESPONSIVE */
     @media (max-width: 1024px) {
       .skills-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .comp-card { grid-template-columns: 1fr; gap: 1rem; }
       .proj-grid { grid-template-columns: 1fr 1fr; }
       .proj-card.feat { grid-column: span 2; }
       .parcours-grid { grid-template-columns: 1fr; gap: 3rem; }
@@ -581,14 +483,13 @@
       hr.sep { margin: 0 5vw; }
       .proj-grid { grid-template-columns: 1fr; }
       .proj-card.feat { grid-column: span 1; }
-      .sb-row { grid-template-columns: 90px 1fr 30px; }
       .form-row2 { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; }
     }
   </style>
 </head>
 <body>
-<!-- NAV -->
+
 <nav id="nav">
   <a href="#home" class="nav-logo">
     <span class="prompt">~</span> enes.erdogan <span class="blink"></span>
@@ -600,6 +501,7 @@
     <li><a href="#contact"><span class="num">04.</span>contact</a></li>
   </ul>
 </nav>
+
 <!-- HERO -->
 <section id="home">
   <div class="hero-inner">
@@ -608,12 +510,10 @@
     <div class="hero-tags">
       <span class="hero-tag">BUT Informatique</span>
       <span class="hero-tag">IUT de Montreuil</span>
-      <span class="hero-tag">Java · Python · C · SQL</span>
+      <span class="hero-tag">Java · Python · SQL · TypeScript</span>
       <span class="hero-tag">Data & IA</span>
     </div>
-    <p class="hero-desc">
-      Étudiant en 2ème année de BUT Informatique, je construis des solutions concrètes — de l'IA à la data, du web aux systèmes embarqués. Curieux, autonome et toujours en train d'apprendre.
-    </p>
+    <p class="hero-desc">Étudiant en 3ème année de BUT Informatique en alternance chez Monoprix, je construis des solutions concrètes — data, IA, web et systèmes. Curieux, autonome et toujours en train d'apprendre.</p>
     <div class="hero-cta">
       <a href="#projets" class="btn btn-green">voir mes projets →</a>
       <a href="#contact" class="btn btn-outline">me contacter</a>
@@ -621,19 +521,19 @@
   </div>
   <div class="scroll-hint">scroll</div>
 </section>
+
 <hr class="sep">
+
 <!-- COMPÉTENCES -->
 <section id="competences">
   <div class="skills-layout">
     <div>
-      <div class="s-eye reveal">01 / compétences</div>
-      <h2 class="s-title reveal">Ce que<br>je maîtrise</h2>
-      <p class="s-sub reveal">6 compétences du référentiel BUT Informatique — associées à mes outils et langages.</p>
-      <div class="code-block reveal">
+      <div class="s-eye">01 / compétences</div>
+      <h2 class="s-title">Ce que<br>je maîtrise</h2>
+      <p class="s-sub">6 compétences du référentiel BUT Informatique Parcours C, associées à mes outils et langages.</p>
+      <div class="code-block">
         <div class="code-header">
-          <span class="dot dot-r"></span>
-          <span class="dot dot-y"></span>
-          <span class="dot dot-g"></span>
+          <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
           <span class="cf">enes.stack.py</span>
         </div>
         <div class="code-body">
@@ -641,348 +541,242 @@
           <div><span class="kw">class</span> <span class="fn">EnesErdogan</span>:</div>
           <div>&nbsp;&nbsp;<span>formation</span> = <span class="st">"BUT Informatique"</span></div>
           <div>&nbsp;&nbsp;<span>school</span> &nbsp; = <span class="st">"IUT de Montreuil"</span></div>
-          <div>&nbsp;&nbsp;<span>annee</span> &nbsp;&nbsp; = <span class="nm">2</span></div>
+          <div>&nbsp;&nbsp;<span>annee</span> &nbsp;&nbsp; = <span class="nm">3</span></div>
+          <div>&nbsp;&nbsp;<span>statut</span> &nbsp; = <span class="st">"Alternant @ Monoprix"</span></div>
           <div>&nbsp;</div>
           <div>&nbsp;&nbsp;<span class="cm"># Langages</span></div>
           <div>&nbsp;&nbsp;<span>langages</span> = [</div>
           <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"Java"</span>, <span class="st">"Python"</span>, <span class="st">"C"</span>,</div>
           <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"SQL"</span>, <span class="st">"HTML/CSS"</span>,</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"PHP"</span>, <span class="st">"Unix"</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"PHP"</span>, <span class="st">"Unix"</span>,</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"TypeScript"</span>, <span class="st">"PowerShell"</span></div>
           <div>&nbsp;&nbsp;]</div>
           <div>&nbsp;</div>
           <div>&nbsp;&nbsp;<span class="cm"># Bases de données</span></div>
           <div>&nbsp;&nbsp;<span>databases</span> = [</div>
           <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"PostgreSQL"</span>, <span class="st">"MySQL"</span>,</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"MongoDB"</span>, <span class="st">"Big Data"</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"MongoDB"</span>, <span class="st">"DB2"</span>,</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"Big Data"</span>, <span class="st">"Merise"</span></div>
           <div>&nbsp;&nbsp;]</div>
           <div>&nbsp;</div>
-          <div>&nbsp;&nbsp;<span class="cm"># Outils</span></div>
-          <div>&nbsp;&nbsp;<span>outils</span> = [</div>
+          <div>&nbsp;&nbsp;<span class="cm"># Outils dev</span></div>
+          <div>&nbsp;&nbsp;<span>outils_dev</span> = [</div>
           <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"IntelliJ"</span>, <span class="st">"CLion"</span>, <span class="st">"PyCharm"</span>,</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"VirtualBox"</span>, <span class="st">"MarionnetteVM"</span>,</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"GitHub"</span>, <span class="st">"Trello"</span>,</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"Microsoft Office"</span>, <span class="st">"Canva"</span>, <span class="st">"CapCut"</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"VS Code"</span>, <span class="st">"GitHub"</span>,</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"Next.js"</span>, <span class="st">"Supabase"</span></div>
           <div>&nbsp;&nbsp;]</div>
           <div>&nbsp;</div>
-          <div>&nbsp;&nbsp;<span>focus</span> = <span class="st">"Data & IA 🤖"</span></div>
+          <div>&nbsp;&nbsp;<span class="cm"># Outils sys & réseau</span></div>
+          <div>&nbsp;&nbsp;<span>outils_sys</span> = [</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"VirtualBox"</span>, <span class="st">"MarionnetteVM"</span>,</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"Ivanti EPM"</span>, <span class="st">"Jamf"</span>,</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"Active Directory"</span></div>
+          <div>&nbsp;&nbsp;]</div>
+          <div>&nbsp;</div>
+          <div>&nbsp;&nbsp;<span class="cm"># Gestion & créa</span></div>
+          <div>&nbsp;&nbsp;<span>autres</span> = [</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"Trello"</span>, <span class="st">"Microsoft Office"</span>,</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"Canva"</span>, <span class="st">"CapCut"</span>,</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="st">"Qlik Sense"</span>, <span class="st">"Pacbase"</span></div>
+          <div>&nbsp;&nbsp;]</div>
+          <div>&nbsp;</div>
+          <div>&nbsp;&nbsp;<span>focus</span> = <span class="st">"Data & IA"</span></div>
         </div>
       </div>
     </div>
 
-    <div class="reveal" id="skills-bars">
+    <div class="comp-grid">
 
-      <!-- RÉALISER -->
-      <div class="comp-card reveal">
-        <div class="comp-header">
-          <span class="comp-icon">⚙️</span>
-          <div>
-            <div class="comp-title">Réaliser</div>
-            <div class="comp-desc">Concevoir, coder, tester et intégrer une solution informatique pour un client.</div>
+      <div class="comp-card">
+        <div class="comp-left">
+          
+          <div class="comp-title">Réaliser</div>
+          <div class="comp-desc">Concevoir, coder, tester et intégrer une solution informatique.</div>
+        </div>
+        <div class="comp-right">
+          <div class="ce-row">
+            <span class="ce-badge">CE1.01 · besoins client</span>
+            <span class="ce-badge">CE1.03 · algorithmes</span>
+            <span class="ce-badge">CE1.04 · qualité du code</span>
+            <span class="ce-badge">CE1.06 · ressources techniques</span>
           </div>
-        </div>
-        <div class="comp-ce">
-          <span class="ce-tag">CE1.01 · respecter les besoins du client</span>
-          <span class="ce-tag">CE1.03 · principes algorithmiques</span>
-          <span class="ce-tag">CE1.04 · qualité du code &amp; documentation</span>
-          <span class="ce-tag">CE1.06 · choisir les ressources techniques</span>
-        </div>
-        <div class="comp-situations">
-          <div class="sit-title">Situations professionnelles</div>
-          <div class="sit-list">Élaborer · Faire évoluer · Maintenir une application informatique</div>
-        </div>
-        <div class="comp-niveaux">
-          <div class="niveau-block">
-            <div class="niveau-label">Niveau 1 — Développer des applications simples</div>
-            <div class="niveau-acs">
-              <span class="ac-tag">AC11.01 · Implémenter des conceptions simples</span>
-              <span class="ac-tag">AC11.02 · Élaborer des conceptions simples</span>
-              <span class="ac-tag">AC11.03 · Essais et évaluation des résultats</span>
-              <span class="ac-tag">AC11.04 · Développer des interfaces utilisateurs</span>
-            </div>
+          <div class="outils-row">
+            <span class="outil-badge">Java</span>
+            <span class="outil-badge">Python</span>
+            <span class="outil-badge">C</span>
+            <span class="outil-badge">IntelliJ IDEA</span>
+            <span class="outil-badge">PyCharm</span>
+            <span class="outil-badge">CLion</span>
           </div>
-          <div class="niveau-block">
-            <div class="niveau-label">Niveau 2 — Application complète</div>
-            <div class="niveau-acs">
-              <span class="ac-tag">AC21.01 · Spécifications fonctionnelles et non fonctionnelles</span>
-              <span class="ac-tag">AC21.02 · Accessibilité et ergonomie</span>
-              <span class="ac-tag">AC21.03 · Bonnes pratiques de conception et programmation</span>
-              <span class="ac-tag">AC21.04 · Vérifier et valider par les tests</span>
-            </div>
-          </div>
-        </div>
-        <div class="skill-bars">
-          <div class="sb-row"><span class="sb-label">Java</span><div class="bar-track"><div class="bar-fill" data-w="80"></div></div><span class="sb-pct">80%</span></div>
-          <div class="sb-row"><span class="sb-label">Python</span><div class="bar-track"><div class="bar-fill" data-w="66"></div></div><span class="sb-pct">66%</span></div>
-          <div class="sb-row"><span class="sb-label">C</span><div class="bar-track"><div class="bar-fill" data-w="68"></div></div><span class="sb-pct">68%</span></div>
-          <div class="sb-row"><span class="sb-label">IntelliJ IDEA</span><div class="bar-track"><div class="bar-fill c" data-w="88"></div></div><span class="sb-pct">88%</span></div>
-          <div class="sb-row"><span class="sb-label">PyCharm</span><div class="bar-track"><div class="bar-fill c" data-w="84"></div></div><span class="sb-pct">84%</span></div>
-          <div class="sb-row"><span class="sb-label">CLion</span><div class="bar-track"><div class="bar-fill c" data-w="76"></div></div><span class="sb-pct">76%</span></div>
         </div>
       </div>
 
-      <!-- OPTIMISER -->
-      <div class="comp-card reveal">
-        <div class="comp-header">
-          <span class="comp-icon">🚀</span>
-          <div>
-            <div class="comp-title">Optimiser</div>
-            <div class="comp-desc">Proposer des applications informatiques optimisées selon des critères spécifiques : temps d'exécution, précision, consommation de ressources.</div>
+      <div class="comp-card">
+        <div class="comp-left">
+          
+          <div class="comp-title">Optimiser</div>
+          <div class="comp-desc">Applications optimisées selon des critères de performance.</div>
+        </div>
+        <div class="comp-right">
+          <div class="ce-row">
+            <span class="ce-badge">CE2.01 · modéliser</span>
+            <span class="ce-badge">CE2.02 · algorithmes et structures</span>
+            <span class="ce-badge">CE2.03 · raisonnement</span>
+            <span class="ce-badge">CE2.04 · valider les résultats</span>
           </div>
-        </div>
-        <div class="comp-ce">
-          <span class="ce-tag">CE2.01 · formaliser et modéliser des situations complexes</span>
-          <span class="ce-tag">CE2.02 · algorithmes et structures de données usuels</span>
-          <span class="ce-tag">CE2.03 · schémas de raisonnement</span>
-          <span class="ce-tag">CE2.04 · justifier les choix et valider les résultats</span>
-        </div>
-        <div class="comp-situations">
-          <div class="sit-title">Situations professionnelles</div>
-          <div class="sit-list">Améliorer les performances · Limiter l'impact environnemental · Mettre en place des applications efficaces</div>
-        </div>
-        <div class="comp-niveaux">
-          <div class="niveau-block">
-            <div class="niveau-label">Niveau 1 — Appréhender et construire des algorithmes</div>
-            <div class="niveau-acs">
-              <span class="ac-tag">AC12.01 · Analyser un problème avec méthode</span>
-              <span class="ac-tag">AC12.02 · Comparer des algorithmes classiques (tris, recherche...)</span>
-              <span class="ac-tag">AC12.03 · Outils mathématiques pour l'informatique</span>
-            </div>
+          <div class="outils-row">
+            <span class="outil-badge">Java</span>
+            <span class="outil-badge">Python</span>
+            <span class="outil-badge">C</span>
           </div>
-          <div class="niveau-block">
-            <div class="niveau-label">Niveau 2 — Sélectionner les algorithmes adéquats</div>
-            <div class="niveau-acs">
-              <span class="ac-tag">AC22.01 · Structures de données complexes adaptées</span>
-              <span class="ac-tag">AC22.02 · Techniques avancées (IA, optimisation globale...)</span>
-              <span class="ac-tag">AC22.03 · Sécurisation des données et du code</span>
-              <span class="ac-tag">AC22.04 · Impact environnemental et sociétal</span>
-            </div>
-          </div>
-        </div>
-        <div class="skill-bars">
-          <div class="sb-row"><span class="sb-label">Java</span><div class="bar-track"><div class="bar-fill" data-w="80"></div></div><span class="sb-pct">80%</span></div>
-          <div class="sb-row"><span class="sb-label">Python</span><div class="bar-track"><div class="bar-fill" data-w="66"></div></div><span class="sb-pct">66%</span></div>
-          <div class="sb-row"><span class="sb-label">C</span><div class="bar-track"><div class="bar-fill" data-w="68"></div></div><span class="sb-pct">68%</span></div>
         </div>
       </div>
 
-      <!-- ADMINISTRER -->
-      <div class="comp-card reveal">
-        <div class="comp-header">
-          <span class="comp-icon">🖧</span>
-          <div>
-            <div class="comp-title">Administrer</div>
-            <div class="comp-desc">Installer, configurer, maintenir en conditions opérationnelles des infrastructures, services et réseaux et optimiser le système informatique.</div>
+      <div class="comp-card">
+        <div class="comp-left">
+          
+          <div class="comp-title">Administrer</div>
+          <div class="comp-desc">Infrastructures, services et réseaux opérationnels.</div>
+        </div>
+        <div class="comp-right">
+          <div class="ce-row">
+            <span class="ce-badge">CE3.01 · sécuriser le SI</span>
+            <span class="ce-badge">CE3.02 · qualité de service</span>
+            <span class="ce-badge">CE3.03 · normes architecturales</span>
+            <span class="ce-badge">CE3.04 · continuité d'activité</span>
           </div>
-        </div>
-        <div class="comp-ce">
-          <span class="ce-tag">CE3.01 · sécuriser le système d'information</span>
-          <span class="ce-tag">CE3.02 · qualité de service optimale</span>
-          <span class="ce-tag">CE3.03 · normes et bonnes pratiques architecturales</span>
-          <span class="ce-tag">CE3.04 · assurer la continuité d'activité</span>
-        </div>
-        <div class="comp-situations">
-          <div class="sit-title">Situations professionnelles</div>
-          <div class="sit-list">Déployer une nouvelle architecture · Améliorer une infrastructure · Sécuriser les applications et services</div>
-        </div>
-        <div class="comp-niveaux">
-          <div class="niveau-block">
-            <div class="niveau-label">Niveau 1 — Installer et configurer un poste de travail</div>
-            <div class="niveau-acs">
-              <span class="ac-tag">AC13.01 · Composants matériels et logiciels d'un système numérique</span>
-              <span class="ac-tag">AC13.02 · Système multitâches / multiutilisateurs</span>
-              <span class="ac-tag">AC13.03 · Installer et configurer un OS et des outils de dev</span>
-              <span class="ac-tag">AC13.04 · Configurer un poste dans un réseau d'entreprise</span>
-            </div>
+          <div class="outils-row">
+            <span class="outil-badge">Unix / Bash</span>
+            <span class="outil-badge">VirtualBox</span>
+            <span class="outil-badge">MarionnetteVM</span>
+            <span class="outil-badge">Ivanti EPM</span>
+            <span class="outil-badge">Jamf</span>
+            <span class="outil-badge">PowerShell</span>
+            <span class="outil-badge">Active Directory</span>
           </div>
-          <div class="niveau-block">
-            <div class="niveau-label">Niveau 2 — Déployer des services en réseau</div>
-            <div class="niveau-acs">
-              <span class="ac-tag">AC23.01 · Concevoir et développer des applications communicantes</span>
-              <span class="ac-tag">AC23.02 · Serveurs et services réseaux virtualisés</span>
-              <span class="ac-tag">AC23.03 · Sécuriser les services et données d'un système</span>
-            </div>
-          </div>
-        </div>
-        <div class="skill-bars">
-          <div class="sb-row"><span class="sb-label">Unix / Bash</span><div class="bar-track"><div class="bar-fill o" data-w="82"></div></div><span class="sb-pct">82%</span></div>
-          <div class="sb-row"><span class="sb-label">VirtualBox</span><div class="bar-track"><div class="bar-fill o" data-w="78"></div></div><span class="sb-pct">78%</span></div>
-          <div class="sb-row"><span class="sb-label">MarionnetteVM</span><div class="bar-track"><div class="bar-fill o" data-w="74"></div></div><span class="sb-pct">74%</span></div>
         </div>
       </div>
 
-      <!-- GÉRER -->
-      <div class="comp-card reveal">
-        <div class="comp-header">
-          <span class="comp-icon">🗄️</span>
-          <div>
-            <div class="comp-title">Gérer</div>
-            <div class="comp-desc">Concevoir, gérer, administrer et exploiter les données de l'entreprise pour un bon pilotage.</div>
-          </div>
+      <div class="comp-card">
+        <div class="comp-left">
+          
+          <div class="comp-title">Gérer</div>
+          <div class="comp-desc">Données de l'entreprise pour un bon pilotage.</div>
         </div>
-        <div class="comp-ce">
-          <span class="ce-tag">CE4.01 · RGPD &amp; protection des données</span>
-          <span class="ce-tag">CE4.02 · enjeux économiques, sociétaux et écologiques du stockage</span>
-          <span class="ce-tag">CE4.03 · bases mathématiques</span>
-          <span class="ce-tag">CE4.05 · cohérence et qualité des données</span>
-        </div>
-        <div class="comp-situations">
-          <div class="sit-title">Situations professionnelles</div>
-          <div class="sit-list">Lancer un projet · Sécuriser des données · Exploiter des données pour la prise de décisions</div>
-        </div>
-        <div class="comp-niveaux">
-          <div class="niveau-block">
-            <div class="niveau-label">Niveau 1 — Concevoir et mettre en place une BDD</div>
-            <div class="niveau-acs">
-              <span class="ac-tag">AC14.01 · Mettre à jour et interroger une BDD relationnelle</span>
-              <span class="ac-tag">AC14.02 · Visualiser des données</span>
-              <span class="ac-tag">AC14.03 · Concevoir une BDD depuis un cahier des charges</span>
-            </div>
+        <div class="comp-right">
+          <div class="ce-row">
+            <span class="ce-badge">CE4.01 · RGPD</span>
+            <span class="ce-badge">CE4.02 · enjeux du stockage</span>
+            <span class="ce-badge">CE4.03 · bases mathématiques</span>
+            <span class="ce-badge">CE4.05 · cohérence et qualité</span>
           </div>
-          <div class="niveau-block">
-            <div class="niveau-label">Niveau 2 — Optimiser et sécuriser une BDD</div>
-            <div class="niveau-acs">
-              <span class="ac-tag">AC24.01 · Optimiser les modèles de données</span>
-              <span class="ac-tag">AC24.02 · Sécurité des données (intégrité &amp; confidentialité)</span>
-              <span class="ac-tag">AC24.03 · Restitution des données par programmation</span>
-              <span class="ac-tag">AC24.04 · Manipuler des données hétérogènes</span>
-            </div>
+          <div class="outils-row">
+            <span class="outil-badge">SQL</span>
+            <span class="outil-badge">PostgreSQL</span>
+            <span class="outil-badge">MySQL</span>
+            <span class="outil-badge">MongoDB</span>
+            <span class="outil-badge">DB2</span>
+            <span class="outil-badge">Pacbase</span>
+            <span class="outil-badge">Big Data</span>
+            <span class="outil-badge">Merise</span>
+            <span class="outil-badge">Excel avancé</span>
           </div>
-          <div class="niveau-block">
-            <div class="niveau-label">Niveau 3 — Systèmes d'informations décisionnels</div>
-            <div class="niveau-acs">
-              <span class="ac-tag">AC34.01 · Capturer et stocker des données volumineuses</span>
-              <span class="ac-tag">AC34.02 · Préparer et extraire les données</span>
-              <span class="ac-tag">AC34.03 · Exploration et exploitation (ML, BI, fouille)</span>
-              <span class="ac-tag">AC34.04 · Mettre en production le système de gestion de données</span>
-            </div>
-          </div>
-        </div>
-        <div class="skill-bars">
-          <div class="sb-row"><span class="sb-label">SQL</span><div class="bar-track"><div class="bar-fill o" data-w="80"></div></div><span class="sb-pct">80%</span></div>
-          <div class="sb-row"><span class="sb-label">PostgreSQL</span><div class="bar-track"><div class="bar-fill o" data-w="82"></div></div><span class="sb-pct">82%</span></div>
-          <div class="sb-row"><span class="sb-label">MySQL</span><div class="bar-track"><div class="bar-fill o" data-w="78"></div></div><span class="sb-pct">78%</span></div>
-          <div class="sb-row"><span class="sb-label">MongoDB</span><div class="bar-track"><div class="bar-fill o" data-w="72"></div></div><span class="sb-pct">72%</span></div>
-          <div class="sb-row"><span class="sb-label">Big Data</span><div class="bar-track"><div class="bar-fill o" data-w="65"></div></div><span class="sb-pct">65%</span></div>
         </div>
       </div>
 
-      <!-- CONDUIRE -->
-      <div class="comp-card reveal">
-        <div class="comp-header">
-          <span class="comp-icon">📋</span>
-          <div>
-            <div class="comp-title">Conduire</div>
-            <div class="comp-desc">Satisfaire les besoins des utilisateurs, organiser et piloter un projet informatique avec des méthodes classiques ou agiles.</div>
-          </div>
+      <div class="comp-card">
+        <div class="comp-left">
+          
+          <div class="comp-title">Conduire</div>
+          <div class="comp-desc">Piloter un projet informatique, méthodes agiles ou classiques.</div>
         </div>
-        <div class="comp-ce">
-          <span class="ce-tag">CE5.01 · communiquer avec les acteurs du projet</span>
-          <span class="ce-tag">CE5.02 · règles juridiques et normes en vigueur</span>
-          <span class="ce-tag">CE5.03 · gestion éthique, responsable et durable</span>
-          <span class="ce-tag">CE5.04 · démarche proactive, créative et critique</span>
-        </div>
-        <div class="comp-situations">
-          <div class="sit-title">Situations professionnelles</div>
-          <div class="sit-list">Lancer un projet · Piloter la maintenance · Faire évoluer un système d'information</div>
-        </div>
-        <div class="comp-niveaux">
-          <div class="niveau-block">
-            <div class="niveau-label">Niveau 1 — Identifier les besoins métiers</div>
-            <div class="niveau-acs">
-              <span class="ac-tag">AC15.01 · Besoins du client et de l'utilisateur</span>
-              <span class="ac-tag">AC15.02 · Outils de gestion de projet</span>
-              <span class="ac-tag">AC15.03 · Acteurs et phases d'un cycle de développement</span>
-            </div>
+        <div class="comp-right">
+          <div class="ce-row">
+            <span class="ce-badge">CE5.01 · communiquer</span>
+            <span class="ce-badge">CE5.02 · règles juridiques</span>
+            <span class="ce-badge">CE5.03 · gestion éthique</span>
+            <span class="ce-badge">CE5.04 · démarche proactive</span>
           </div>
-          <div class="niveau-block">
-            <div class="niveau-label">Niveau 2 — Suivi de projet selon les besoins métiers</div>
-            <div class="niveau-acs">
-              <span class="ac-tag">AC25.01 · Processus dans une organisation</span>
-              <span class="ac-tag">AC25.02 · Formaliser les besoins client</span>
-              <span class="ac-tag">AC25.03 · Critères de faisabilité d'un projet</span>
-              <span class="ac-tag">AC25.04 · Démarche de suivi de projet</span>
-            </div>
+          <div class="outils-row">
+            <span class="outil-badge">Trello</span>
+            <span class="outil-badge">GitHub</span>
+            <span class="outil-badge">Microsoft Office</span>
           </div>
-          <div class="niveau-block">
-            <div class="niveau-label">Niveau 3 — Conception et mise en oeuvre SI</div>
-            <div class="niveau-acs">
-              <span class="ac-tag">AC35.01 · Impacts économiques, sociétaux et technologiques</span>
-              <span class="ac-tag">AC35.02 · Intégrer un projet dans le SI d'une organisation</span>
-              <span class="ac-tag">AC35.03 · Adapter un système d'information</span>
-            </div>
-          </div>
-        </div>
-        <div class="skill-bars">
-          <div class="sb-row"><span class="sb-label">Trello</span><div class="bar-track"><div class="bar-fill p" data-w="88"></div></div><span class="sb-pct">88%</span></div>
-          <div class="sb-row"><span class="sb-label">GitHub</span><div class="bar-track"><div class="bar-fill p" data-w="85"></div></div><span class="sb-pct">85%</span></div>
-          <div class="sb-row"><span class="sb-label">Microsoft Office</span><div class="bar-track"><div class="bar-fill p" data-w="90"></div></div><span class="sb-pct">90%</span></div>
         </div>
       </div>
 
-      <!-- COLLABORER -->
-      <div class="comp-card reveal">
-        <div class="comp-header">
-          <span class="comp-icon">🤝</span>
-          <div>
-            <div class="comp-title">Collaborer</div>
-            <div class="comp-desc">Acquérir, développer et exploiter les aptitudes nécessaires pour travailler efficacement dans une équipe informatique.</div>
+      <div class="comp-card">
+        <div class="comp-left">
+          
+          <div class="comp-title">Collaborer</div>
+          <div class="comp-desc">Travailler efficacement dans une équipe informatique.</div>
+        </div>
+        <div class="comp-right">
+          <div class="ce-row">
+            <span class="ce-badge">CE6.01 · équipe pluridisciplinaire</span>
+            <span class="ce-badge">CE6.02 · évolutions informatiques</span>
+            <span class="ce-badge">CE6.03 · contraintes juridiques</span>
+            <span class="ce-badge">CE6.04 · communication collaborative</span>
           </div>
-        </div>
-        <div class="comp-ce">
-          <span class="ce-tag">CE6.01 · équipe pluridisciplinaire</span>
-          <span class="ce-tag">CE6.02 · accompagner les évolutions informatiques</span>
-          <span class="ce-tag">CE6.03 · contraintes juridiques</span>
-          <span class="ce-tag">CE6.04 · communication efficace et collaborative</span>
-        </div>
-        <div class="comp-situations">
-          <div class="sit-title">Situations professionnelles</div>
-          <div class="sit-list">Lancer un projet · Organiser son travail en équipe · Élaborer, gérer et transmettre de l'information</div>
-        </div>
-        <div class="comp-niveaux">
-          <div class="niveau-block">
-            <div class="niveau-label">Niveau 1 — Identifier ses aptitudes en équipe</div>
-            <div class="niveau-acs">
-              <span class="ac-tag">AC16.01 · Appréhender l'écosystème numérique</span>
-              <span class="ac-tag">AC16.02 · Aptitudes selon les secteurs informatiques</span>
-              <span class="ac-tag">AC16.03 · Rôles dans une équipe pluridisciplinaire</span>
-              <span class="ac-tag">AC16.04 · Compétences interpersonnelles pour travailler en équipe</span>
-            </div>
+          <div class="outils-row">
+            <span class="outil-badge">GitHub</span>
+            <span class="outil-badge">Canva</span>
+            <span class="outil-badge">CapCut</span>
+            <span class="outil-badge">HTML / CSS</span>
+            <span class="outil-badge">PHP</span>
           </div>
-          <div class="niveau-block">
-            <div class="niveau-label">Niveau 2 — Situer son rôle dans une équipe informatique</div>
-            <div class="niveau-acs">
-              <span class="ac-tag">AC26.01 · Diversité et structure de l'informatique en organisation</span>
-              <span class="ac-tag">AC26.02 · Intégrer une équipe informatique</span>
-              <span class="ac-tag">AC26.03 · Compétences interpersonnelles en équipe</span>
-              <span class="ac-tag">AC26.04 · Rendre compte de son activité professionnelle</span>
-            </div>
-          </div>
-        </div>
-        <div class="skill-bars">
-          <div class="sb-row"><span class="sb-label">GitHub</span><div class="bar-track"><div class="bar-fill p" data-w="85"></div></div><span class="sb-pct">85%</span></div>
-          <div class="sb-row"><span class="sb-label">Canva / CapCut</span><div class="bar-track"><div class="bar-fill p" data-w="82"></div></div><span class="sb-pct">82%</span></div>
-          <div class="sb-row"><span class="sb-label">HTML / CSS</span><div class="bar-track"><div class="bar-fill p" data-w="75"></div></div><span class="sb-pct">75%</span></div>
-          <div class="sb-row"><span class="sb-label">PHP</span><div class="bar-track"><div class="bar-fill p" data-w="70"></div></div><span class="sb-pct">70%</span></div>
         </div>
       </div>
 
     </div>
   </div>
 </section>
+
 <hr class="sep">
+
 <!-- PROJETS -->
 <section id="projets">
-  <div class="s-eye reveal">02 / projets</div>
-  <h2 class="s-title reveal">Ce que j'ai construit</h2>
-  <p class="s-sub reveal">Projets académiques et personnels — du BUT jusqu'au Bac.</p>
+  <div class="s-eye">02 / projets</div>
+  <h2 class="s-title">Ce que j'ai construit</h2>
+  <p class="s-sub">Projets académiques et personnels — du BUT jusqu'au Bac.</p>
   <div class="proj-grid">
-    <div class="proj-card feat reveal">
+    <div class="proj-card feat">
       <div class="proj-top">
-        <span class="proj-icon">🤖</span>
+        <span class="proj-year">BUT 2 · SAE S4 · 2025–2026</span>
+      </div>
+      <h3>Data Warehouse — Qualité de l'air (OpenAQ)</h3>
+      <p>Collecte de données en temps réel via l'API OpenAQ (Python), stockage dans une base relationnelle PostgreSQL puis modélisation en schéma en étoile pour l'analyse décisionnelle. Rédaction de 20 requêtes SQL dont 5 requêtes OLAP (agrégations, rollup, cube). Visualisation et dashboard interactif sous Qlik Sense pour l'analyse des tendances de pollution par pays, ville et période.</p>
+      <div class="proj-stack">
+        <span class="st-tag g">Python</span>
+        <span class="st-tag g">PostgreSQL</span>
+        <span class="st-tag g">SQL / OLAP</span>
+        <span class="st-tag o">Qlik Sense</span>
+        <span class="st-tag">Data Warehouse</span>
+        <span class="st-tag">Big Data</span>
+      </div>
+    </div>
+    <div class="proj-card feat">
+      <div class="proj-top">
+        <span class="proj-year">Freelance · 2026</span>
+      </div>
+      <h3>Site de réservation — Infrabike Chelles (EDA Conseil)</h3>
+      <p>Conception et développement complet d'un site de réservation pour un studio Infrabike à Chelles. Gestion des créneaux, des formules (séance unique, packs 5 et 10), notifications email automatiques, espace admin, sécurité RLS et SEO optimisé. Intégration du paiement en ligne Axepta BNP Paribas. Déployé sur Cloudflare Workers à edaconseil.fr.</p>
+      <div class="proj-stack">
+        <span class="st-tag g">Next.js</span>
+        <span class="st-tag g">TypeScript</span>
+        <span class="st-tag g">Supabase</span>
+        <span class="st-tag c">Tailwind CSS</span>
+        <span class="st-tag c">PostgreSQL</span>
+        <span class="st-tag">Cloudflare</span>
+        <span class="st-tag">Resend</span>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top">
         <span class="proj-year">BUT 2 · 2024–2025</span>
       </div>
       <h3>IA — Optimisation des trajets infirmiers à Paris</h3>
-      <p>Intelligence artificielle pour simplifier et optimiser les tournées des infirmiers libéraux en Île-de-France. Algorithme de routage appliqué à un cas concret — réduction des distances et meilleure gestion du planning.</p>
+      <p>Intelligence artificielle pour optimiser les tournées des infirmiers libéraux en Île-de-France. Algorithme de routage appliqué à un cas concret — réduction des distances et meilleure gestion du planning.</p>
       <div class="proj-stack">
         <span class="st-tag g">Python</span>
         <span class="st-tag g">Machine Learning</span>
@@ -990,9 +784,9 @@
         <span class="st-tag">Algo</span>
       </div>
     </div>
-    <div class="proj-card reveal">
+    <div class="proj-card">
       <div class="proj-top">
-        <span class="proj-icon">🎮</span>
+        
         <span class="proj-year">BUT 1 · 2023–2024</span>
       </div>
       <h3>Puissance 4 — IA multi-niveaux en Java</h3>
@@ -1003,9 +797,9 @@
         <span class="st-tag">POO</span>
       </div>
     </div>
-    <div class="proj-card reveal">
+    <div class="proj-card">
       <div class="proj-top">
-        <span class="proj-icon">🏅</span>
+        
         <span class="proj-year">BUT · 2024</span>
       </div>
       <h3>Site web — Jeux Olympiques 2028</h3>
@@ -1016,26 +810,26 @@
         <span class="st-tag">Web</span>
       </div>
     </div>
-    <div class="proj-card reveal">
+    <div class="proj-card">
       <div class="proj-top">
-        <span class="proj-icon">🗄️</span>
+        
         <span class="proj-year">BUT 1 · 2023</span>
       </div>
       <h3>Base de données — Jeu de survie</h3>
-      <p>Conception complète pour un jeu de survie : MCD, MCT et script SQL. Modélisation des joueurs, ressources, événements et inventaires.</p>
+      <p>Conception complète : MCD, MCT et script SQL. Modélisation des joueurs, ressources, événements et inventaires.</p>
       <div class="proj-stack">
         <span class="st-tag o">SQL</span>
         <span class="st-tag o">MCD / MCT</span>
         <span class="st-tag">Modélisation</span>
       </div>
     </div>
-    <div class="proj-card reveal">
+    <div class="proj-card">
       <div class="proj-top">
-        <span class="proj-icon">🌿</span>
+        
         <span class="proj-year">Bac STI2D · 2022–2024</span>
       </div>
       <h3>Serre autonome — Raspberry Pi</h3>
-      <p>Conception et réalisation d'une serre intelligente. Pilotage automatique de l'irrigation, ventilation et luminosité via capteurs.</p>
+      <p>Serre intelligente pilotant automatiquement l'irrigation, la ventilation et la luminosité via capteurs.</p>
       <div class="proj-stack">
         <span class="st-tag p">Raspberry Pi</span>
         <span class="st-tag p">Python</span>
@@ -1043,78 +837,105 @@
         <span class="st-tag">IoT</span>
       </div>
     </div>
-    <div class="proj-card reveal">
+    <div class="proj-card">
       <div class="proj-top">
-        <span class="proj-icon">🖥️</span>
         <span class="proj-year">BUT · Réseau & Archi</span>
       </div>
       <h3>Virtualisation — Machine virtuelle Ubuntu</h3>
-      <p>Création et configuration approfondie de machines virtuelles sous VirtualBox et MarionnetteVM. Installation d'Ubuntu, configuration réseau, déploiement de logiciels et gestion de l'environnement système en ligne de commande Unix.</p>
+      <p>Création et configuration de VMs sous VirtualBox et MarionnetteVM. Ubuntu, config réseau et gestion Unix.</p>
       <div class="proj-stack">
         <span class="st-tag p">VirtualBox</span>
         <span class="st-tag p">MarionnetteVM</span>
         <span class="st-tag p">Ubuntu</span>
         <span class="st-tag">Unix</span>
-        <span class="st-tag">Réseau</span>
       </div>
+    </div>
     </div>
   </div>
 </section>
+
 <hr class="sep">
+
 <!-- PARCOURS -->
 <section id="parcours">
-  <div class="s-eye reveal">03 / parcours</div>
-  <h2 class="s-title reveal">Formation &<br>expériences</h2>
-  <p class="s-sub reveal">Ce qui m'a construit jusqu'ici.</p>
+  <div class="s-eye">03 / parcours</div>
+  <h2 class="s-title">Formation &<br>expériences</h2>
+  <p class="s-sub">Ce qui m'a construit jusqu'ici.</p>
   <div class="parcours-grid">
-    <div class="par-col reveal">
+    <div class="par-col">
       <h3><span class="dot-g2"></span>&nbsp; Formation</h3>
       <ul class="tl">
         <li class="tl-item">
           <div class="tl-date">2023 — Aujourd'hui</div>
-          <div class="tl-title">BUT Informatique</div>
+          <div class="tl-title">BUT Informatique — Parcours AGED</div>
           <div class="tl-place">IUT de Montreuil · Université Paris 8</div>
-          <div class="tl-desc">Parcours Déploiement d'applications communicantes. Dev logiciel, data, réseaux, BDD et IA. Projets en équipe sur des cas concrets.</div>
+          <div class="tl-desc">Formation en 3 ans orientée administration, gestion et exploitation des données. Développement logiciel (Java, Python, C), conception et gestion de bases de données (SQL, PostgreSQL, MongoDB, DB2), réseaux et systèmes, IA et Big Data. Projets en équipe sur des cas concrets (SAE), méthodes agiles et gestion de projet. 3ème année en alternance chez Monoprix.</div>
         </li>
         <li class="tl-item">
           <div class="tl-date">2022 — 2024</div>
           <div class="tl-title">Baccalauréat STI2D</div>
           <div class="tl-place">Sciences et Technologies de l'Industrie et du Développement Durable</div>
-          <div class="tl-desc">Spécialité technique axée programmation et systèmes embarqués. Projet de serre autonome avec Raspberry Pi en pratique.</div>
+          <div class="tl-desc">Bac technologique orienté ingénierie, programmation et systèmes embarqués. Enseignements en électronique, mécanique, informatique et développement durable. Projet de fin d'année : conception et réalisation d'une serre autonome pilotée par Raspberry Pi — gestion automatique de l'irrigation, de la ventilation et de la luminosité via capteurs.</div>
         </li>
       </ul>
     </div>
-    <div class="par-col reveal">
+    <div class="par-col">
       <h3><span class="dot-g2"></span>&nbsp; Expériences</h3>
       <ul class="tl">
+        <li class="tl-item">
+          <div class="tl-date">Sept. 2026 — Aujourd'hui</div>
+          <div class="tl-title">Alternance — Gestionnaire Bases de Données</div>
+          <div class="tl-place">Monoprix · Siège social, Clichy</div>
+          <div class="tl-desc">Saisie et contrôle de l'intégrité des données articles (création, mise à jour, suppression). Relances fournisseurs pour l'obtention des informations produits. Vérification et qualification des litiges fournisseurs en collaboration avec la comptabilité. Garantir la disponibilité et la fiabilité des données pour la vente en ligne et en magasin. Environnement mainframe : DB2, COBOL, Pacbase, MVS. Modélisation Merise, synchronisation base DB2 avec interface web (WordPress via API).</div>
+        </li>
+        <li class="tl-item">
+          <div class="tl-date">Avr. — Juin 2026</div>
+          <div class="tl-title">Stagiaire Support Technique</div>
+          <div class="tl-place">AFP (Agence France-Presse) · Paris · Service SFEU, DSI</div>
+          <div class="tl-desc">Migration Windows 10 → 11 (BIOS, Secure Boot UEFI, provisioning Ivanti EPM). Gestion de parc Ivanti EPM et Jamf (Apple). Maintenance matérielle (RAM, SSD, réseau). Préparation de kits terrain (Starlink, 5G, NVMe). Support utilisateurs, aménagement de salles, administration Active Directory (PowerShell) et rédaction documentation VeraCrypt.</div>
+        </li>
+        <li class="tl-item">
+          <div class="tl-date">Sept. 2026</div>
+          <div class="tl-title">Vendeur en boucherie</div>
+          <div class="tl-place">NovoViande · Tavergny</div>
+          <div class="tl-desc">Accueil et conseil clientèle, vente de produits bouchers et charcutiers, découpe et préparation des viandes, mise en vitrine, gestion des stocks et entretien de l'espace de vente. Travail en autonomie dans un environnement exigeant.</div>
+        </li>
+        <li class="tl-item">
+          <div class="tl-date">En parallèle</div>
+          <div class="tl-title">Créateur de contenu</div>
+          <div class="tl-place">Indépendant · Instagram, TikTok</div>
+          <div class="tl-desc">Création et publication de contenu sur les réseaux sociaux. Montage vidéo, gestion de compte, stratégie de publication et analyse des performances.</div>
+        </li>
         <li class="tl-item">
           <div class="tl-date">En parallèle</div>
           <div class="tl-title">Professeur particulier</div>
           <div class="tl-place">Indépendant · Île-de-France</div>
-          <div class="tl-desc">Cours particuliers en Mathématiques, Sciences, Anglais et Italien auprès d'élèves de différents niveaux. Pédagogie adaptée, suivi personnalisé et progression régulière.</div>
+          <div class="tl-desc">Cours particuliers en Mathématiques, Sciences, Anglais et Italien. Pédagogie adaptée, suivi personnalisé.</div>
         </li>
         <li class="tl-item">
           <div class="tl-date">En parallèle</div>
-          <div class="tl-title">Coiffeur</div>
+          <div class="tl-title">Coiffeur indépendant</div>
           <div class="tl-place">Indépendant</div>
-          <div class="tl-desc">Activité de coiffure en parallèle des études — sens du service, écoute client et précision du geste.</div>
+          <div class="tl-desc">Sens du service, écoute client et précision du geste en parallèle des études.</div>
         </li>
       </ul>
     </div>
   </div>
 </section>
+
 <hr class="sep">
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-layout">
-    <div class="reveal">
+    <div>
       <div class="s-eye">04 / contact</div>
       <div class="contact-big">Travaillons<br><span>ensemble.</span></div>
       <p class="contact-desc">Ouvert aux opportunités de stage, alternance et collaborations data/IA. N'hésite pas.</p>
       <div class="contact-links">
-        <a href="/cdn-cgi/l/email-protection#25404b40560b4057414a42444b6555574a514a4b48444c490b464a48" class="c-link">
-          <span class="ic">✉</span>
-          <div><span class="lbl">Email</span><span class="__cf_email__" data-cfemail="96f3f8f3e5b8f3e4f2f9f1f7f8d6e6e4f9e2f9f8fbf7fffab8f5f9fb">[email&#160;protected]</span></div>
+        <a href="mailto:enes.erdogan@protonmail.com" class="c-link">
+          <span class="ic"></span>
+          <div><span class="lbl">Email</span>enes.erdogan@protonmail.com</div>
         </a>
         <a href="https://www.linkedin.com/in/enes-erdogann/" target="_blank" class="c-link">
           <span class="ic">in</span>
@@ -1125,12 +946,12 @@
           <div><span class="lbl">GitHub</span>github.com/Enesss00</div>
         </a>
         <a href="#" class="c-link">
-          <span class="ic">📍</span>
+          <span class="ic"></span>
           <div><span class="lbl">Localisation</span>Île-de-France</div>
         </a>
       </div>
     </div>
-    <div class="form-right reveal">
+    <div class="form-right">
       <div class="form-row2">
         <div class="f-group">
           <label>Prénom</label>
@@ -1153,25 +974,16 @@
     </div>
   </div>
 </section>
-<!-- FOOTER -->
+
 <footer>
   <span>© 2025 <span class="accent">Enes Erdogan</span></span>
   <span>BUT Informatique · IUT Montreuil</span>
 </footer>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+<script>
   window.addEventListener('scroll', () => {
     document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
   });
-  const revObs = new IntersectionObserver((entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        revObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0, rootMargin: '0px 0px -30px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
-  const barObs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.width = ent
+</script>
+</body>
+</html>
