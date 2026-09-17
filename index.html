@@ -338,7 +338,24 @@
     .proj-card:not(.feat)::after { background: var(--cyan); }
     .proj-top { display: flex; justify-content: space-between; align-items: flex-start; }
     .proj-icon { font-size: 1.6rem; line-height: 1; }
-    .proj-year { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-faint); }
+    .proj-links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border); }
+    .proj-link {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--green);
+      border: 1px solid rgba(61,220,132,0.35);
+      background: rgba(61,220,132,0.06);
+      padding: 0.4rem 0.9rem;
+      border-radius: 4px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .proj-link:hover { background: var(--green); color: #000; border-color: var(--green); }
+    .proj-link-icon { font-size: 0.75rem; }
     .proj-card h3 { font-family: var(--display); font-weight: 700; font-size: 1rem; color: var(--ink); line-height: 1.3; }
     .proj-card p { font-size: 0.84rem; color: var(--ink-dim); line-height: 1.65; flex: 1; }
     .proj-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; }
@@ -510,7 +527,7 @@
     <div class="hero-tags">
       <span class="hero-tag">BUT Informatique</span>
       <span class="hero-tag">IUT de Montreuil</span>
-      <span class="hero-tag">Java · Python · SQL · TypeScript</span>
+      <span class="hero-tag">Java · Python · SQL · C</span>
       <span class="hero-tag">Data & IA</span>
     </div>
     <p class="hero-desc">Étudiant en 3ème année de BUT Informatique en alternance chez Monoprix, je construis des solutions concrètes — data, IA, web et systèmes. Curieux, autonome et toujours en train d'apprendre.</p>
@@ -589,16 +606,15 @@
 
       <div class="comp-card">
         <div class="comp-left">
-          
           <div class="comp-title">Réaliser</div>
-          <div class="comp-desc">Concevoir, coder, tester et intégrer une solution informatique.</div>
+          <div class="comp-desc">Partir d'un besoin et livrer quelque chose qui fonctionne — du code propre, testé, documenté.</div>
         </div>
         <div class="comp-right">
           <div class="ce-row">
-            <span class="ce-badge">CE1.01 · besoins client</span>
-            <span class="ce-badge">CE1.03 · algorithmes</span>
-            <span class="ce-badge">CE1.04 · qualité du code</span>
-            <span class="ce-badge">CE1.06 · ressources techniques</span>
+            <span class="ce-badge">comprendre ce que le client veut vraiment</span>
+            <span class="ce-badge">écrire du code lisible et maintenable</span>
+            <span class="ce-badge">choisir les bons outils pour le bon problème</span>
+            <span class="ce-badge">tester avant de livrer</span>
           </div>
           <div class="outils-row">
             <span class="outil-badge">Java</span>
@@ -613,16 +629,15 @@
 
       <div class="comp-card">
         <div class="comp-left">
-          
           <div class="comp-title">Optimiser</div>
-          <div class="comp-desc">Applications optimisées selon des critères de performance.</div>
+          <div class="comp-desc">Faire tourner un programme plus vite, plus proprement, avec moins de ressources.</div>
         </div>
         <div class="comp-right">
           <div class="ce-row">
-            <span class="ce-badge">CE2.01 · modéliser</span>
-            <span class="ce-badge">CE2.02 · algorithmes et structures</span>
-            <span class="ce-badge">CE2.03 · raisonnement</span>
-            <span class="ce-badge">CE2.04 · valider les résultats</span>
+            <span class="ce-badge">décomposer un problème complexe</span>
+            <span class="ce-badge">choisir le bon algorithme</span>
+            <span class="ce-badge">comprendre les structures de données</span>
+            <span class="ce-badge">mesurer et justifier les résultats</span>
           </div>
           <div class="outils-row">
             <span class="outil-badge">Java</span>
@@ -634,16 +649,15 @@
 
       <div class="comp-card">
         <div class="comp-left">
-          
           <div class="comp-title">Administrer</div>
-          <div class="comp-desc">Infrastructures, services et réseaux opérationnels.</div>
+          <div class="comp-desc">Installer, configurer et maintenir des environnements qui tiennent dans le temps.</div>
         </div>
         <div class="comp-right">
           <div class="ce-row">
-            <span class="ce-badge">CE3.01 · sécuriser le SI</span>
-            <span class="ce-badge">CE3.02 · qualité de service</span>
-            <span class="ce-badge">CE3.03 · normes architecturales</span>
-            <span class="ce-badge">CE3.04 · continuité d'activité</span>
+            <span class="ce-badge">configurer des systèmes et réseaux</span>
+            <span class="ce-badge">gérer un parc informatique</span>
+            <span class="ce-badge">virtualiser des environnements</span>
+            <span class="ce-badge">sécuriser les accès et les services</span>
           </div>
           <div class="outils-row">
             <span class="outil-badge">Unix / Bash</span>
@@ -659,16 +673,15 @@
 
       <div class="comp-card">
         <div class="comp-left">
-          
           <div class="comp-title">Gérer</div>
-          <div class="comp-desc">Données de l'entreprise pour un bon pilotage.</div>
+          <div class="comp-desc">Modéliser, structurer et exploiter des données fiables — de la BDD relationnelle au Big Data.</div>
         </div>
         <div class="comp-right">
           <div class="ce-row">
-            <span class="ce-badge">CE4.01 · RGPD</span>
-            <span class="ce-badge">CE4.02 · enjeux du stockage</span>
-            <span class="ce-badge">CE4.03 · bases mathématiques</span>
-            <span class="ce-badge">CE4.05 · cohérence et qualité</span>
+            <span class="ce-badge">concevoir des bases de données solides</span>
+            <span class="ce-badge">garantir l'intégrité et la qualité des données</span>
+            <span class="ce-badge">écrire des requêtes efficaces et complexes</span>
+            <span class="ce-badge">respecter le RGPD et la confidentialité</span>
           </div>
           <div class="outils-row">
             <span class="outil-badge">SQL</span>
@@ -686,16 +699,15 @@
 
       <div class="comp-card">
         <div class="comp-left">
-          
           <div class="comp-title">Conduire</div>
-          <div class="comp-desc">Piloter un projet informatique, méthodes agiles ou classiques.</div>
+          <div class="comp-desc">Organiser un projet de A à Z — du besoin initial à la livraison, sans perdre le fil.</div>
         </div>
         <div class="comp-right">
           <div class="ce-row">
-            <span class="ce-badge">CE5.01 · communiquer</span>
-            <span class="ce-badge">CE5.02 · règles juridiques</span>
-            <span class="ce-badge">CE5.03 · gestion éthique</span>
-            <span class="ce-badge">CE5.04 · démarche proactive</span>
+            <span class="ce-badge">cadrer les besoins et les priorités</span>
+            <span class="ce-badge">suivre l'avancement et anticiper les blocages</span>
+            <span class="ce-badge">communiquer clairement avec les parties prenantes</span>
+            <span class="ce-badge">travailler en méthode agile</span>
           </div>
           <div class="outils-row">
             <span class="outil-badge">Trello</span>
@@ -707,16 +719,15 @@
 
       <div class="comp-card">
         <div class="comp-left">
-          
           <div class="comp-title">Collaborer</div>
-          <div class="comp-desc">Travailler efficacement dans une équipe informatique.</div>
+          <div class="comp-desc">Travailler en équipe sans frictions — partager le code, communiquer, s'adapter.</div>
         </div>
         <div class="comp-right">
           <div class="ce-row">
-            <span class="ce-badge">CE6.01 · équipe pluridisciplinaire</span>
-            <span class="ce-badge">CE6.02 · évolutions informatiques</span>
-            <span class="ce-badge">CE6.03 · contraintes juridiques</span>
-            <span class="ce-badge">CE6.04 · communication collaborative</span>
+            <span class="ce-badge">versionner et partager le travail proprement</span>
+            <span class="ce-badge">s'intégrer dans une équipe pluridisciplinaire</span>
+            <span class="ce-badge">documenter pour que les autres comprennent</span>
+            <span class="ce-badge">créer du contenu pour communiquer</span>
           </div>
           <div class="outils-row">
             <span class="outil-badge">GitHub</span>
@@ -753,6 +764,13 @@
         <span class="st-tag o">Qlik Sense</span>
         <span class="st-tag">Data Warehouse</span>
         <span class="st-tag">Big Data</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/Enesss00/sae-s4-qualite-air/blob/main/rapport_SAE_S4_qualite_air.docx" target="_blank" class="proj-link"><span class="proj-link-icon">↓</span> Rapport</a>
+        <a href="https://github.com/Enesss00/sae-s4-qualite-air/blob/main/fetch_openaq.py" target="_blank" class="proj-link"><span class="proj-link-icon">&lt;/&gt;</span> Code source</a>
+        <a href="https://github.com/Enesss00/sae-s4-qualite-air/blob/main/MCD_qualite_air.pdf" target="_blank" class="proj-link"><span class="proj-link-icon">⬡</span> MCD</a>
+        <a href="https://github.com/Enesss00/sae-s4-qualite-air/blob/main/requetes_sql.sql" target="_blank" class="proj-link"><span class="proj-link-icon">⌗</span> Requêtes SQL</a>
+        <a href="https://github.com/Enesss00/sae-s4-qualite-air" target="_blank" class="proj-link"><span class="proj-link-icon">⌥</span> Repo GitHub</a>
       </div>
     </div>
     <div class="proj-card feat">
